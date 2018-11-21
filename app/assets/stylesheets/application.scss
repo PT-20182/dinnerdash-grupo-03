@@ -12,3 +12,102 @@
  *
  */
  @import "bootstrap";
+
+
+/* Login Screen */
+.containerLogin{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.imageContainer{
+    width: 65%;
+    height: 100vh;
+}
+.dinnerImage{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+.cadastroCollum{
+    width: 35%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+.dinnerTitle{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 2.5em;
+    padding-top: 2em;
+    padding-bottom: 1em;
+    margin-left: 1em; 
+    color: rgb(53, 47, 47); 
+}
+.formCadastro{
+    padding-left: 2.6em;
+}
+.informationInput{
+    margin-bottom: 1em;
+}
+.submitButtom{
+    background-color: rgb(61, 180, 61);
+    color: white;
+    width: 80%;
+    height: 40px;
+    font-size: 0.8em;
+    border-radius: 5px;
+    margin-bottom: 0.2em;
+    border: 0px;
+    cursor: pointer;
+}
+.submitButtom:hover{
+    background-color: rgb(47, 141, 47);
+}
+.inputText{
+    color: #444444;
+    padding-bottom: 0.1em;
+    font-size: 0.8em;
+}
+.inputBox{
+    background-color: white;
+    border-radius:5px;
+    height: 2em;
+    width: 80%; 
+    border: 1px solid #bebdbd;
+    font-size: 1em;
+    color: rgb(51, 51, 51);
+}
+.separateLine{  
+    height: 1px;
+    width: 73%;
+    background-color: rgb(112, 108, 108);
+    margin-left: 2.6em;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.loginLink{
+    margin-left:2.6em;
+}
+.loginText{
+    color: #444444; 
+    padding-bottom: 1em;    
+}
+.loginButton{
+    border: 1px solid rgb(63, 221, 63);
+    font-size: 0.8em;
+    height: 3em;
+    width: 80%;
+    background-color:white;
+    color:  rgb(63, 221, 63);
+    border-radius: 5px;
+    cursor: pointer;
+}
+.loginButton:hover{
+    background-color: rgb(235, 235, 235);
+}
+.loginButton:active {
+    background-color: rgb(80, 177, 80);
+    color: white;
+}
+/* End of login screen */

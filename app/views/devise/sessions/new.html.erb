@@ -25,14 +25,14 @@
           <% end -%>
 
           <div class="actions">
-            <%= f.submit "Log in", class:'submitButtom' %>
+            <%= f.submit "fazer login", class:'submitButtom' %>
           </div>
         <% end %>
       </div>
       <div class="separateLine"></div>
-      <div class="loginLink">
-          <%= render "devise/shared/links" %>
-        
+       <div class="loginLink">
+       <div class='alreadyAccountText'> Não possui conta?</div>
+        <%= render "devise/shared/links" %>
       </div>
     </div>
 </div>

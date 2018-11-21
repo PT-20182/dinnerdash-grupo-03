@@ -88,6 +88,26 @@
 }
 .loginLink{
     margin-left:2.6em;
+    display: flex;
+    flex-direction: column ;
+    font-family: "Times New Roman", Times, serif;
+}
+.alreadyAccountText{
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+}
+.signin{
+    border: 1px solid rgb(63, 221, 63);
+    font-size: 0.8em;
+    height: 3em;
+    width: 80%;
+    background-color:white;
+    color:  rgb(63, 221, 63);
+    border-radius: 5px;
+}
+.signin:hover{
+    background-color: #f3f3f3;
+    cursor: pointer;
 }
 .loginText{
     color: #444444; 

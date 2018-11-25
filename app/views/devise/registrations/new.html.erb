@@ -10,20 +10,22 @@
           <%= devise_error_messages! %>
 
           <div class="informationInput">
+            <%= f.label :name , 'Nome'%><br />
+            <%= f.text_field :name,autofocus: true, class: "inputBox"  %>
+          </div>
+
+          <div class="informationInput">
             <%= f.label :email %><br />
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "inputBox"  %>
           </div>
 
           <div class="informationInput">
-            <%= f.label :password %>
-            <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em>
-            <% end %><br />
+            <%= f.label :password,'Senha' %><br/ >
             <%= f.password_field :password, autocomplete: "new-password",class: "inputBox"  %>
           </div>
 
           <div class="informationInput">
-            <%= f.label :password_confirmation %><br />
+            <%= f.label :password_confirmation, 'Confirme sua senha' %><br />
             <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "inputBox" %>
           </div>
 

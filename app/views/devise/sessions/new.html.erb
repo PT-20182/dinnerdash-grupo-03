@@ -13,16 +13,19 @@
           </div>
 
           <div class="informationInput">
-            <%= f.label :password %><br />
+            <%= f.label :password , 'Senha'%><br />
             <%= f.password_field :password,class: "inputBox" ,autocomplete: "current-password" %>
           </div>
 
-          <% if devise_mapping.rememberable? -%>
-            <div class="field">
-              <%= f.check_box :remember_me %>
-              <%= f.label :remember_me %>
-            </div>
-          <% end -%>
+          <%- #Botão do "lembre de mim", por enquanto desativado pois não faz parte do pedido -%>
+          <% if false %>
+            <% if devise_mapping.rememberable? -%>
+              <div class="field">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+            <% end -%>
+          <% end %>
 
           <div class="actions">
             <%= f.submit "Log in", class:'submitButtom' %>

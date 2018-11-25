@@ -30,13 +30,18 @@
           </div>
 
           <div class="actions">
-            <%= f.submit "Sign up" ,class:'submitButtom'%>
+            <%= f.submit "Cadastrar" ,class:'submitButtom'%>
           </div>
         <% end %>
       </div>
       <div class="separateLine"></div>
       <div class="loginLink">
-          <%= render "devise/shared/links" %>
+          
+          <%= button_to("Fazer login", user_session_path ,class:'loginButton') %>
+          <%- #Render padrão da página retirado -%>
+          <% if false %>
+            <%= render "devise/shared/links" %>
+          <% end %>
         
       </div>
     </div>

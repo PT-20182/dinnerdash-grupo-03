@@ -34,8 +34,11 @@
       </div>
       <div class="separateLine"></div>
       <div class="loginLink">
-          <%= render "devise/shared/links" %>
-        
+            <%= link_to "Fazer cadastro", new_registration_path(resource_name) %><br />
+          <%- #Render padrão da página retirado -%>
+          <% if false %>
+            <%= render "devise/shared/links" %>
+          <% end %>
       </div>
     </div>
 </div>

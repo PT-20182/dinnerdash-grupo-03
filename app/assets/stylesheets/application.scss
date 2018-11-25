@@ -20,6 +20,10 @@
     flex-direction: row;
     flex-wrap: nowrap;
 }
+.fixedimage{
+    position: fixed;
+    width: 65%;
+}
 .imageContainer{
     width: 65%;
     height: 100vh;

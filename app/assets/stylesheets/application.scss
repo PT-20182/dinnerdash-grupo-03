@@ -20,6 +20,10 @@
     flex-direction: row;
     flex-wrap: nowrap;
 }
+.fixedimage{
+    position: fixed;
+    width: 65%;
+}
 .imageContainer{
     width: 65%;
     height: 100vh;
@@ -27,7 +31,8 @@
 .dinnerImage{
     display: flex;
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    overflow: auto;
 }
 .cadastroCollum{
     width: 35%;
@@ -39,13 +44,15 @@
 .dinnerTitle{
     font-family: 'Open Sans', sans-serif;
     font-size: 2.5em;
-    padding-top: 2em;
+    padding-top: 2vw;
     padding-bottom: 1em;
     margin-left: 1em; 
     color: rgb(53, 47, 47); 
 }
 .formCadastro{
     padding-left: 2.6em;
+    font-family: sans-serif;
+    font-weight: 300;
 }
 .informationInput{
     margin-bottom: 1em;
@@ -115,6 +122,8 @@
 }
 .loginButton{
     border: 1px solid rgb(63, 221, 63);
+    text-align: center;
+    line-height: 3em;
     font-size: 0.8em;
     height: 3em;
     width: 80%;
@@ -125,9 +134,15 @@
 }
 .loginButton:hover{
     background-color: rgb(235, 235, 235);
+    text-decoration: none;
+    color:rgb(63, 221, 63);
 }
 .loginButton:active {
     background-color: rgb(80, 177, 80);
     color: white;
+}
+.outraopcao{
+    margin-bottom: 1em;
+    font-size: 1.2em;
 }
 /* End of login screen */

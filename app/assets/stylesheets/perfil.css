@@ -1,0 +1,80 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    /* overflow: hidden; */   
+    font-family: 'Open Sans', sans-serif;
+    src: url("//fonts.googleapis.com/css?family=Open+Sans");
+}
+
+.logo{
+    font-family: 'Amaranth', sans-serif;
+    src: url("http://fonts.googleapis.com/css?family=Amaranth" );
+}
+
+.tcontainer{
+    /* background-image: url("/home/ahmoura/Documentos/cjr/dinner-dash-20182-front/imagens/helloquence-61189.jpg"); */
+    background-image: url("../images/perfil.jpeg"); 
+    background-repeat: no-repeat;
+    background-attachment: local;
+    background-position: center;
+    background-size: cover;
+    width: 100vw;
+    height: 50vh;
+    background-color: #CCCCCC;
+    background-blend-mode: multiply;
+}
+
+.top_text{
+    margin-top: 15vh;
+}
+
+.top_text h1{
+    font-size: 9vh; 
+}
+
+.top_text p{
+    font-size: 3vh;
+}
+
+.bottom_navbar{
+    padding-left: 5vw;
+    padding-right: 5vw;
+    max-height: 3.5vh;
+}
+
+.text-light .current{
+    color: #FFD700;
+}
+
+.table_backoffice{
+    margin-top: 5vh;
+
+}
+
+.status_col{
+    padding: 0px 1vh 0px 1vh;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.perfil_form{
+    margin: 8vh 2vh 0vh 2vh;
+}
+
+.button_form:hover{
+    width: 25vw;
+    height: 6vh;
+    background-color: #FFFFFF;
+    border: 2px solid #39cc6c;
+    color: #39cc6c;
+    border-radius: 5px;
+}
+
+.button_form{
+    width: 25vw;
+    height: 6vh;
+    background-color: #39cc6c;
+    border: 2px solid #39cc6c;
+    color: #FFFFFF;
+    border-radius: 5px;
+}

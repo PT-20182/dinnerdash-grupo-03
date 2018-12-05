@@ -8,5 +8,7 @@
 
 MealCategory.create(name: 'Massa')
 MealCategory.create(name: 'Salada')
-Meal.create(name: 'Macarrão', price:'12,90', description: 'sugoi')
-Meal.create(name: 'Pão', price:'12,90', description: 'sugoi',meal_categories_id: 1)
+Meal.create(name: 'Pão', price:'13,90', description: 'sugoi',meal_categories_id: 1)
+Meal.create(name: 'Arroz', price:'14,90', description: 'É muito bom',meal_categories_id: 1)
+Meal.create(name: 'Feijão', price:'15,90', description: 'Maravilhoso',meal_categories_id: 1)
+Meal.create(name: 'Batat', price:'10,90', description: 'Compre, ta barato',meal_categories_id: 1)

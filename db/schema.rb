@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_05_143404) do
+ActiveRecord::Schema.define(version: 2018_12_05_144749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,16 @@ ActiveRecord::Schema.define(version: 2018_12_05_143404) do
     t.datetime "updated_at", null: false
     t.bigint "meal_categories_id"
     t.index ["meal_categories_id"], name: "index_meals_on_meal_categories_id"
+  end
+
+  create_table "ordel_meals", force: :cascade do |t|
+    t.float "quantity"
+    t.bigint "meal_id"
+    t.bigint "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["meal_id"], name: "index_ordel_meals_on_meal_id"
+    t.index ["order_id"], name: "index_ordel_meals_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -51,4 +61,6 @@ ActiveRecord::Schema.define(version: 2018_12_05_143404) do
   end
 
   add_foreign_key "meals", "meal_categories", column: "meal_categories_id"
+  add_foreign_key "ordel_meals", "meals"
+  add_foreign_key "ordel_meals", "orders"
 end

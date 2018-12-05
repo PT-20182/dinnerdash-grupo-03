@@ -1,0 +1,23 @@
+<% session[:cart] ||= [] %>
+<h1> Carrinho </h1>
+
+
+<div class="allCategories">
+    <% @meals.each do |item| %>
+        <div class="cardsContainer">
+            <div class="card" style="width: 18rem;">
+                <h3> Imagem aqui </h3>
+                <div class="card-body">
+                    <h5 class="card-title"><%= item.name %></h5>
+                    <p class="card-text"><%= item.description %></p>
+                    <p class="card-text">R$ <%=item.price%> por porção</p>
+                    <% #<a href="#" class="btn btn-primary">Go somewhere</a> %>
+                    <%=link_to "Adicionar ao carrinho", additem_path(id: item.id), method: :put, class: "btn btn-primary"%> 
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>
+<br><br><br>
+<h1> Mostrando carrinho </h1>
+<%= session[:cart]%>

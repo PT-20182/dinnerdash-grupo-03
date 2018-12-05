@@ -8,11 +8,16 @@
             <div class="card" style="width: 18rem;">
                 <h3> Imagem aqui </h3>
                 <div class="card-body">
+                <% totaldisp = 1..10 %>
+                <% optionsarray = []%>
+                <% totaldisp.each do |i| %>
+                    <%optionsarray.push([i.to_s, i])%>
+                <% end %>
                     <h5 class="card-title"><%= item.name %></h5>
                     <p class="card-text"><%= item.description %></p>
                     <p class="card-text">R$ <%=item.price%> por porção</p>
                     <%= form_tag(additem_path(id: item.id), method: :put) do |f| %>
-                        <%= number_field(:quant, in: 1..10) %>
+                        <%= select_tag(:quant, options_for_select(optionsarray)) %>
                         <%= submit_tag("Adicionar") %>
                     <% end %>
                     <% #<a href="#" class="btn btn-primary">Go somewhere</a> %>

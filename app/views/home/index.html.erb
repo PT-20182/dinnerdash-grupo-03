@@ -11,8 +11,13 @@
                     <h5 class="card-title"><%= item.name %></h5>
                     <p class="card-text"><%= item.description %></p>
                     <p class="card-text">R$ <%=item.price%> por porção</p>
+                    <%= form_tag(additem_path(id: item.id), method: :put) do |f| %>
+                        <%= number_field(:quant, in: 1..10) %>
+                        <%= submit_tag("Adicionar") %>
+                    <% end %>
                     <% #<a href="#" class="btn btn-primary">Go somewhere</a> %>
-                    <%=link_to "Adicionar ao carrinho", additem_path(id: item.id), method: :put, class: "btn btn-primary"%> 
+                    <%#link_to "Adicionar ao carrinho", additem_path(id: item.id), method: :put, class: "btn btn-primary"%> 
+                    
                 </div>
             </div>
         </div>

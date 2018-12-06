@@ -1,3 +1,76 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.cardsContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+.card{
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+
+.pageTitle{
+    margin-left: 4em;
+    align-self: baseline;
+    color: white;
+    margin-bottom: 3em;
+}
+.navbarCustom{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: white;
+    margin-top: 10px;
+    margin-right: 4em;  
+    margin-left: 4em;
+}
+
+.linkNav{
+    font-size: 0.9em;
+    font-weight: 900;
+    color: white;
+}
+.linkNav:hover{
+    color: rgb(97, 97, 97);
+    text-decoration: none;
+}
+.pagName{
+    font-family: Amaranth;
+    font-size: 1.5em;
+}
+.containerB{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 40vh;
+    justify-content: space-between;
+    background-image: asset_url("foodCart.jpeg");
+    background-size: cover;
+    
+    background-position: center;
+    z-index: 1;
+}
+.darker{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.titleText{
+    font-size: 3.5em;
+    font-weight: 900;
+}
+
+/* Pedido finalizado style */
+
+.priceText{
+    color: rgb(5, 170, 14);
+}

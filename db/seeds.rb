@@ -12,3 +12,4 @@ Meal.create(name: 'Pão', price:'13,90', description: 'sugoi',meal_categories_id
 Meal.create(name: 'Arroz', price:'14,90', description: 'É muito bom',meal_categories_id: 1)
 Meal.create(name: 'Feijão', price:'15,90', description: 'Maravilhoso',meal_categories_id: 1)
 Meal.create(name: 'Batat', price:'10,90', description: 'Compre, ta barato',meal_categories_id: 1)
+Meal.create(name: 'Azul', price:'10,90', description: 'Compre, ta barato',meal_categories_id: 2)

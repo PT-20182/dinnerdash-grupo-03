@@ -1,14 +1,18 @@
 class CartController < ApplicationController
 
     def additem
+        # Pegando os parametros passados
         @cart_meals = params[:id]
         @quanti = params[:quant]
         @Price = params[:price]
+
+        # Criando um dicionario com os valores recebidos
         @new_cart_member = {}
         @new_cart_member[:id] = @cart_meals
         @new_cart_member[:number] = @quanti
         @new_cart_member[:price] = @Price.to_f
 
+        # Verificando se o item já existe no carrinho
         @checkBoolean = true
         i=0
         found=0
@@ -20,14 +24,15 @@ class CartController < ApplicationController
             i+=1
         end
 
+        # Se não existir, adiciona ao carrinho
+        # Se já existir Só atualiza a quantidade
         if @checkBoolean == true
             set_cart.push(@new_cart_member)
         else
             b = set_cart[found]["number"].to_i
             b += @quanti.to_i
             set_cart[found]["number"] = b.to_s
-        end
-        
+        end    
 
         redirect_to root_path
     end 

@@ -3,7 +3,14 @@
 <p>
   <strong>Price:</strong>
   <%= @order.price %>
+  <% @order.ordelMeal.each do |item|  %>
+  <%= item.quantity %>
+  <% @meal = Meal.all.where(id: item["meal_id"]).take %>
+  <%= @meal.name %>
+
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
+<%= link_to  "Carrinho", root_path %>

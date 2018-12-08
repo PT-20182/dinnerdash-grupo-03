@@ -83,8 +83,12 @@
 <h1> Preço total do pedido: <div class="priceText"><%= totalPrice %></div> <h1>
 
 <% if user_signed_in? %>
+    <% if session[:cart] == [] %>
+        <h5> Coloque itens no carrinho <h5>
+    <% else%>
     <h1>Finalizar Pedido </h1>
     <%= link_to  "Finalizar", new_order_path %>
+    <%end%>
 <% else %>
     <div><%= link_to "entrar com minha conta", new_user_session_path %> <%= link_to  "fazer o meu cadastro", new_user_registration_path %></div>
 <%end %>

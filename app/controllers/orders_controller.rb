@@ -16,23 +16,38 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     totalprice = 0
+    # Passando todos os itens salvos no session para OrderMeals e salvando-os
+    # Na nova Order a ser criada
     session[:cart].each do |item|
+      # Para cada item na session, é criada um nova OrderMeal
       @new_Ordel_Meal = OrdelMeal.new
       @to_add = Meal.all.where(id: item["id"]).take
+
+      # Adicionado os valores necessarios
       @new_Ordel_Meal.meal_id = @to_add.id
       @new_Ordel_Meal.order_id = @order
       @new_Ordel_Meal.quantity = item["number"]
 
-      totalprice += item["price"]
+      #Contador para o preço total
+      totalprice += item["price"].to_f * item["number"].to_f
       @order.ordelMeal << @new_Ordel_Meal
 
+      # Salvando nova OrderMeal
       @new_Ordel_Meal.save
     end
+    # Adicionando valores na order e salvando
     @order.price = totalprice
     @order.user_id = current_user.id
     @order.save
+
+    # Salvando a order no User
+    current_user.order << @order
+
+    # Clear no carrinho
     session[:cart] =[]
-    redirect_to orders_path
+
+    # Redirecinando a view dessa nova order criada
+    redirect_to @order
   end
 
   # GET /orders/1/edit
@@ -72,6 +87,9 @@ class OrdersController < ApplicationController
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy
+    @order.ordelMeal.each do |item|
+      item.destroy
+    end
     @order.destroy
     respond_to do |format|
       format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }

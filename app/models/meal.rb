@@ -1,5 +1,5 @@
 class Meal < ApplicationRecord
-    has_one :mealCategory
+    belongs_to :mealCategory
 
     validates :name, presence: true
     validates :name, uniqueness: true

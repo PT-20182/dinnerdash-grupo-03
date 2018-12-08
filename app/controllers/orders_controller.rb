@@ -14,6 +14,21 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
+    if session[:cart] == []
+      redirect_to root_path
+    end
+    @order = Order.new
+  end
+
+  # GET /orders/1/edit
+  def edit
+  end
+
+  # POST /orders
+  # POST /orders.json
+  def create
+
+    # Conferindo se carrinho está vazio
     @order = Order.new
     totalprice = 0
     # Passando todos os itens salvos no session para OrderMeals e salvando-os
@@ -44,30 +59,21 @@ class OrdersController < ApplicationController
     # current_user.order << @order
 
     # Clear no carrinho
-    session[:cart] =[]
+    session[:cart] = []
 
     # Redirecinando a view dessa nova order criada
-    redirect_to @order
-  end
-
-  # GET /orders/1/edit
-  def edit
-  end
-
-  # POST /orders
-  # POST /orders.json
-  def create
-    @order = Order.new(order_params)
-
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
-        format.json { render :show, status: :created, location: @order }
-      else
-        format.html { render :new }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
+    redirect_to orders_path
+  
+    #   Scaffold Code:
+    # respond_to do |format|
+    #   if @order.save
+    #     format.html { redirect_to @order, notice: 'Order was successfully created.' }
+    #     format.json { render :show, status: :created, location: @order }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @order.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /orders/1

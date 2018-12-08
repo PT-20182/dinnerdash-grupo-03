@@ -54,6 +54,7 @@
         </div>
     <% end %>
 </div>
+<div class="sepline"></div>
 <br><br><br>
 <h1> Finalizou seu Prato? </h1>
 <h4> Confira os itens no seu carrinho </h4>
@@ -88,8 +89,8 @@
     <% if session[:cart] == [] %>
         <h5> Coloque itens no carrinho <h5>
     <% else%>
-    <h1>Finalizar Pedido </h1>
-    <%= link_to  "Finalizar", new_order_path %>
+        <h1>Finalizar Pedido </h1>
+        <%= link_to  "Finalizar", new_order_path %>
     <%end%>
 <% else %>
     <div><%= link_to "entrar com minha conta", new_user_session_path %> <%= link_to  "fazer o meu cadastro", new_user_registration_path %></div>

@@ -3,9 +3,11 @@ class CartController < ApplicationController
     def additem
         @cart_meals = params[:id]
         @quanti = params[:quant]
+        @Price = params[:price]
         @new_cart_member = {}
         @new_cart_member[:id] = @cart_meals
         @new_cart_member[:number] = @quanti
+        @new_cart_member[:price] = @Price.to_f
 
         @checkBoolean = true
         i=0

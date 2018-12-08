@@ -39,6 +39,7 @@
                             <p class="card-text priceText">R$ <%=item.price%> por porção</p>
                             <%= form_tag(additem_path(id: item.id), method: :put) do |f| %>
                                 <%= select_tag(:quant, options_for_select(optionsarray)) %>
+                                <%= hidden_field_tag(:price, item.price.to_s) %>
                                 <%= submit_tag("Adicionar") %>
                             <% end %>
                             <% #<a href="#" class="btn btn-primary">Go somewhere</a> %>
@@ -59,7 +60,7 @@
     <% cartMeal = @meals.where(id: item["id"]).take %>
     <%= cartMeal.name %>
     <%= item["number"]%>
-    <%= cartMeal.price %>
+    <%= item["price"] %>
     <% totalpriceMeal = cartMeal.price.to_f * item["number"].to_f %>
     <%= totalpriceMeal %>
     <% totalPrice += totalpriceMeal %>
@@ -83,6 +84,7 @@
 
 <% if user_signed_in? %>
     <h1>Finalizar Pedido </h1>
+    <%= link_to  "Finalizar", new_order_path %>
 <% else %>
     <div><%= link_to "entrar com minha conta", new_user_session_path %> <%= link_to  "fazer o meu cadastro", new_user_registration_path %></div>
 <%end %>

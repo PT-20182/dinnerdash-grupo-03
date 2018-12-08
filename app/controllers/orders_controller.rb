@@ -15,6 +15,24 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    totalprice = 0
+    session[:cart].each do |item|
+      @new_Ordel_Meal = OrdelMeal.new
+      @to_add = Meal.all.where(id: item["id"]).take
+      @new_Ordel_Meal.meal_id = @to_add.id
+      @new_Ordel_Meal.order_id = @order
+      @new_Ordel_Meal.quantity = item["number"]
+
+      totalprice += item["price"]
+      @order.ordelMeal << @new_Ordel_Meal
+
+      @new_Ordel_Meal.save
+    end
+    @order.price = totalprice
+    @order.user_id = current_user.id
+    @order.save
+    session[:cart] =[]
+    redirect_to orders_path
   end
 
   # GET /orders/1/edit

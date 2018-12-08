@@ -49,7 +49,7 @@
     width: 100%;
     height: 40vh;
     justify-content: space-between;
-    background-image: asset_url("foodCart.jpeg");
+    background-image: asset_url("restaurant.jpeg");
     background-size: cover;
     
     background-position: center;
@@ -69,8 +69,48 @@
     font-weight: 900;
 }
 
-/* Pedido finalizado style */
+/* Categorias */
+.allCategories{
+    padding-left: 4em;
+    background-color: rgb(241, 241, 241);
+}
+.catName{
+    color: rgb(75, 75, 75);
+    font-size: 2em;
+}
+.addButtom{
+    background-color: rgb(61, 180, 61);
+    color: white;
+    width: 100%;
+    height: 30px;
+    font-size: 0.8em;
+    border-radius: 3px;
+    margin-bottom: 0.2em;
+    border: 0px;
+    cursor: pointer;
+}
+.addButtom:hover{
+    background-color: rgb(47, 141, 47);
+}
 
+.optionSelect{
+    width: 100%;
+    height: 30px;
+    background-color: white;
+    border: 1px solid;
+    border-color: rgb(133, 133, 133);
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
 .priceText{
     color: rgb(5, 170, 14);
+    margin-bottom: 10px;
+}
+.quantText{
+    color: rgb(87, 86, 86);
+    margin-bottom: 8px;
+}
+.descText{
+    color: rgb(133, 133, 133);
+    margin-bottom: 10px;
 }

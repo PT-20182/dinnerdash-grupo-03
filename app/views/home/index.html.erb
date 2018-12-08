@@ -22,7 +22,7 @@
 
 <div class="allCategories">
     <% @meal_categories.each do |categ| %>
-    <h1><%= categ.name %> </h1>
+    <div class="catName"><%= categ.name %> </div>
         <div class="cardsContainer">
             <% @meals.each do |item| %>
                 <% if item.meal_categories_id == categ.id %>
@@ -35,12 +35,14 @@
                                 <%optionsarray.push([i.to_s, i])%>
                             <% end %>
                             <h5 class="card-title"><%= item.name %></h5>
-                            <p class="card-text"><%= item.description %></p>
-                            <p class="card-text priceText">R$ <%=item.price%> por porção</p>
+                            <p class="descText"><%= item.description %></p>
+                            <p class="priceText">R$ <%=item.price%> por porção</p>
+                            <div class="quantText">Quantidade </div>
                             <%= form_tag(additem_path(id: item.id), method: :put) do |f| %>
-                                <%= select_tag(:quant, options_for_select(optionsarray)) %>
+                                <%= select_tag(:quant, options_for_select(optionsarray), class: "optionSelect") %>
                                 <%= hidden_field_tag(:price, item.price.to_s) %>
-                                <%= submit_tag("Adicionar") %>
+                                <br>
+                                <%= submit_tag("Adicionar", class:"addButtom") %>
                             <% end %>
                             <% #<a href="#" class="btn btn-primary">Go somewhere</a> %>
                             <%#link_to "Adicionar ao carrinho", additem_path(id: item.id), method: :put, class: "btn btn-primary"%> 

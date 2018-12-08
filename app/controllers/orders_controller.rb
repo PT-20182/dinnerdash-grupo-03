@@ -41,7 +41,7 @@ class OrdersController < ApplicationController
     @order.save
 
     # Salvando a order no User
-    current_user.order << @order
+    # current_user.order << @order
 
     # Clear no carrinho
     session[:cart] =[]

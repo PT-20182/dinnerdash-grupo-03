@@ -7,7 +7,7 @@
             <div>
                 <% if user_signed_in? %>
                 <% else %>
-                <div><%= link_to "Entrar", new_user_session_path %> <%= link_to  "cadastro", new_user_registration_path %></div>
+                <div class="headerText"><%= link_to "Entrar", new_user_session_path , class:"sessionHeader" %><%= link_to  "cadastro", new_user_registration_path, class:"sessionHeader" %></div>
                 <% end %>
             </div>
         </div>
@@ -55,43 +55,65 @@
     <% end %>
 </div>
 <div class="sepline"></div>
-<br><br><br>
-<h1> Finalizou seu Prato? </h1>
-<h4> Confira os itens no seu carrinho </h4>
-<% totalPrice = 0%>
-<% session[:cart].each do |item| %>
-    <% cartMeal = @meals.where(id: item["id"]).take %>
-    <%= cartMeal.name %>
-    <%= item["number"]%>
-    <%= item["price"] %>
-    <% totalpriceMeal = cartMeal.price.to_f * item["number"].to_f %>
-    <%= totalpriceMeal %>
-    <% totalPrice += totalpriceMeal %>
+<div class="margin_left">
+    <div class="catName spaceBottom"> Finalizou seu Prato? </div>
+    <div class="quantText"> Confira os itens no seu carrinho antes de finalizar o pedido. </div>
+    <div class="carrinho">
+        <% totalPrice = 0%>
+        <% session[:cart].each do |item| %>
+            <div class="carrinhoCard">
+                <% cartMeal = @meals.where(id: item["id"]).take %>
+                <div class="imageAndInf">
+                    <div class="carrinhoImageCard">Imagem Aqui sss </div>
+                    <div class="carrinhoInformation">
+                        <div class="mealName"><%= cartMeal.name %></div>
+                        <div class="infText">Quantidade: <%= item["number"]%></div>
+                        <div class="infText">Preço unitário: R$ <%= item["price"] %></div>
+                        <% totalpriceMeal = cartMeal.price.to_f * item["number"].to_f %>
+                        <div class="infText">Preço total: R$ <%= totalpriceMeal %></div>
+                    </div>
+                </div>
+                <% totalPrice += totalpriceMeal %>
 
-    <% totaldisp = (1..item["number"].to_f).to_a %>
-    <% totaldisp = totaldisp.reverse %>
-    <% optionsarray = []%>
-    <% totaldisp.each do |i| %>
-        <% optionsarray.push([i.to_s, i]) %>
-    <% end %>
-    <%= form_tag(removeitem_path(id: cartMeal.id), method: :put) do |f| %>
-        <%= select_tag(:quant, options_for_select(optionsarray)) %>
-        <%= submit_tag("remover") %>
-    <% end %>
+                <% totaldisp = (1..item["number"].to_f).to_a %>
+                <% totaldisp = totaldisp.reverse %>
+                <% optionsarray = []%>
+                <% totaldisp.each do |i| %>
+                    <% optionsarray.push([i.to_s, i]) %>
+                <% end %>
+                <div class="carrinhoForm">
+                    <%= form_tag(removeitem_path(id: cartMeal.id), method: :put) do |f| %>
+                        <div class="infText">Quantidade a excluir:</div>
+                        <div><%= select_tag(:quant, options_for_select(optionsarray), class: "optionSelect") %></div>
+                        <div><%= submit_tag("remover do meu prato", class:"rmButtom") %></div>
+                    <% end %>
+                </div>
+            </div>
+        <%end%>
+    </div>
+    <div class="sepline"></div>
 
-    <br>
-<%end%>
-
-
-<h1> Preço total do pedido: <div class="priceText"><%= totalPrice %></div> <h1>
-
-<% if user_signed_in? %>
-    <% if session[:cart] == [] %>
-        <h5> Coloque itens no carrinho <h5>
-    <% else%>
-        <h1>Finalizar Pedido </h1>
-        <%= link_to  "Finalizar", new_order_path %>
-    <%end%>
-<% else %>
-    <div><%= link_to "entrar com minha conta", new_user_session_path %> <%= link_to  "fazer o meu cadastro", new_user_registration_path %></div>
-<%end %>
+    <div class="finalInf"> 
+        <% if session[:cart] == [] %>
+            <div> Coloque itens no carrinho </div>
+        <% else%>
+            <div class="catName spaceBottom"> Preço total do pedido: 
+            <span class="finalprice"> R$ <%= totalPrice %></span> 
+            </div>
+            <% if user_signed_in? %>
+                <h1>Finalizar Pedido </h1>
+                <%= link_to  "Finalizar", new_order_path %>
+            <% else %>
+                <div class="logText"> Para finalizar o seu pedido, entre com sua conta ou faça o seu cadastro</div>
+                <div class="butoes">
+                    <div class="loginLink butoes">
+                        <%= link_to "entrar com minha conta", new_user_session_path ,class:'submitButtom justifybut'%>
+                    </div>
+                    <div class="loginLink butoes">
+                        <%= link_to "fazer cadastro", new_user_registration_path ,class:'loginButton'%>
+                    </div>
+                </div>
+            <%end%>
+        <% end %>
+    </div>
+</div>

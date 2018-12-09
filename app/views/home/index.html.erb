@@ -27,14 +27,16 @@
             <% @meals.each do |item| %>
                 <% if item.meal_categories_id == categ.id %>
                     <div class="card" style="width: 18rem;">
-                        <h3> Imagem aqui </h3>
+                        <div class="imageMeal">
+                            <%= image_tag url_for(item.image),style:"width:100%;height:15em;"%>
+                            <div class="cardTitle"><div class="filterText"><%= item.name %></div></div>
+                        </div>
                         <div class="card-body">
                             <% totaldisp = 1..10 %>
                             <% optionsarray = []%>
                             <% totaldisp.each do |i| %>
                                 <%optionsarray.push([i.to_s, i])%>
                             <% end %>
-                            <h5 class="card-title"><%= item.name %></h5>
                             <p class="descText"><%= item.description %></p>
                             <p class="priceText">R$ <%=item.price%> por porção</p>
                             <div class="quantText">Quantidade </div>
@@ -64,7 +66,7 @@
             <div class="carrinhoCard">
                 <% cartMeal = @meals.where(id: item["id"]).take %>
                 <div class="imageAndInf">
-                    <div class="carrinhoImageCard">Imagem Aqui sss </div>
+                    <div class="paddingr"><%= image_tag url_for(cartMeal.image), class:"carrinhoImageCard"%> </div>
                     <div class="carrinhoInformation">
                         <div class="mealName"><%= cartMeal.name %></div>
                         <div class="infText">Quantidade: <%= item["number"]%></div>
@@ -101,8 +103,12 @@
             <span class="finalprice"> R$ <%= totalPrice %></span> 
             </div>
             <% if user_signed_in? %>
-                <h1>Finalizar Pedido </h1>
-                <%= link_to  "Finalizar", new_order_path %>
+                <div class="logText"> Finalizar Pedido</div>
+                <div class="butoes">
+                    <div class="loginLink butoes">
+                        <%= link_to "finalizar", new_order_path ,class:'loginButton'%>
+                    </div>
+                </div>
             <% else %>
                 <div class="logText"> Para finalizar o seu pedido, entre com sua conta ou faça o seu cadastro</div>
                 <div class="butoes">

@@ -18,6 +18,7 @@ class OrdersController < ApplicationController
       redirect_to root_path
     end
     @order = Order.new
+    @meals = Meal.all
   end
 
   # GET /orders/1/edit

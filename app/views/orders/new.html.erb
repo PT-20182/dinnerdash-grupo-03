@@ -1,40 +1,44 @@
 <h1>New Order</h1>
-
-    <div class="catName spaceBottom"> Finalizou seu Prato? </div>
-    <div class="quantText"> Confira os itens no seu carrinho antes de finalizar o pedido. </div>
-    <div class="carrinho">
-        <% totalPrice = 0%>
-        <% session[:cart].each do |item| %>
-            <div class="carrinhoCard">
-                <% cartMeal = @meals.where(id: item["id"]).take %>
-                <div class="imageAndInf">
-                    <div class="paddingr"><%= image_tag url_for(cartMeal.image), class:"carrinhoImageCard"%> </div>
-                    <div class="carrinhoInformation">
-                        <div class="mealName"><%= cartMeal.name %></div>
-                        <div class="infText">Quantidade: <%= item["number"]%></div>
-                        <div class="infText">Preço unitário: R$ <%= item["price"] %></div>
-                        <% totalpriceMeal = cartMeal.price.to_f * item["number"].to_f %>
-                        <div class="infText">Preço total: R$ <%= totalpriceMeal %></div>
-                    </div>
-                </div>
-                <% totalPrice += totalpriceMeal %>
-
-                <% totaldisp = (1..item["number"].to_f).to_a %>
-                <% totaldisp = totaldisp.reverse %>
-                <% optionsarray = []%>
-                <% totaldisp.each do |i| %>
-                    <% optionsarray.push([i.to_s, i]) %>
-                <% end %>
-                <div class="carrinhoForm">
-                    <%= form_tag(removeitem_path(id: cartMeal.id), method: :put) do |f| %>
-                        <div class="infText">Quantidade a excluir:</div>
-                        <div><%= select_tag(:quant, options_for_select(optionsarray), class: "optionSelect") %></div>
-                        <div><%= submit_tag("remover do meu prato", class:"rmButtom") %></div>
-                    <% end %>
+<% unless user_signed_in? %>
+    <script> alert("Por favor inicie sessão para finalizar pedido") </script>
+    <% redirect_to root_path %>
+<% end %>
+<div class="catName spaceBottom"> Finalizou seu Prato? </div>
+<div class="quantText"> Confira os itens no seu carrinho antes de finalizar o pedido. </div>
+<div class="carrinho">
+    <% totalPrice = 0%>
+    <% session[:cart].each do |item| %>
+        <div class="carrinhoCard">
+            <% cartMeal = @meals.where(id: item["id"]).take %>
+            <div class="imageAndInf">
+                <div class="paddingr"><%= image_tag url_for(cartMeal.image), class:"carrinhoImageCard"%> </div>
+                <div class="carrinhoInformation">
+                    <div class="mealName"><%= cartMeal.name %></div>
+                    <div class="infText">Quantidade: <%= item["number"]%></div>
+                    <div class="infText">Preço unitário: R$ <%= item["price"] %></div>
+                    <% totalpriceMeal = cartMeal.price.to_f * item["number"].to_f %>
+                    <div class="infText">Preço total: R$ <%= totalpriceMeal %></div>
                 </div>
             </div>
-        <%end%>
-    </div>
+            <% totalPrice += totalpriceMeal %>
+
+            <% totaldisp = (1..item["number"].to_f).to_a %>
+            <% totaldisp = totaldisp.reverse %>
+            <% optionsarray = []%>
+            <% totaldisp.each do |i| %>
+                <% optionsarray.push([i.to_s, i]) %>
+            <% end %>
+            <div class="carrinhoForm">
+                <%= form_tag(removeitem_path(id: cartMeal.id), method: :put) do |f| %>
+                    <div class="infText">Quantidade a excluir:</div>
+                    <div><%= select_tag(:quant, options_for_select(optionsarray), class: "optionSelect") %></div>
+                    <div><%= submit_tag("remover do meu prato", class:"rmButtom") %></div>
+                <% end %>
+            </div>
+        </div>
+    <%end%>
+</div>
+
 <%= render 'form', order: @order %>
 
 <%= link_to 'Back', orders_path %>

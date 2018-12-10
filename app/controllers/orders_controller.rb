@@ -19,6 +19,13 @@ class OrdersController < ApplicationController
     end
     @order = Order.new
     @meals = Meal.all
+
+    @userOrders = []
+    Order.all.each do |item|
+      if item.user_id == current_user.id
+        @userOrders << item
+      end
+    end
   end
 
   # GET /orders/1/edit

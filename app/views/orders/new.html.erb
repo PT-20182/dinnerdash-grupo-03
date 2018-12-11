@@ -1,11 +1,3 @@
-<% unless user_signed_in? %>
-    <script> alert("Por favor inicie sessão para finalizar pedido") </script>
-    <% redirect_to root_path %>
-<% end %>
-<% if session[:cart]==[] %>
-    <script> alert("Por favor coloque itens no carrinho para finalizar a compra") </script>
-    <% redirect_to root_path %>
-<% end %>
 <div class="containerFinalOrder">
     <div class="darker">
         <div class="navbarCustom">
@@ -18,7 +10,7 @@
             </div>
         </div>
         <div class="pageTitle">
-            <div class="titleText">Monte o seu prato</div>
+            <div class="titleText">Bem vindo <%= current_user.name%> </div>
             <h2>Escolha seus acompanhamentos e pratos.</h2>
 
         </div>

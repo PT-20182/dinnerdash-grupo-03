@@ -81,9 +81,7 @@ ActiveRecord::Schema.define(version: 2018_12_09_210801) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
-    t.bigint "order_id"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["order_id"], name: "index_users_on_order_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -92,5 +90,4 @@ ActiveRecord::Schema.define(version: 2018_12_09_210801) do
   add_foreign_key "ordel_meals", "meals"
   add_foreign_key "ordel_meals", "orders"
   add_foreign_key "orders", "users"
-  add_foreign_key "users", "orders"
 end

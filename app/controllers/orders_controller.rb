@@ -17,6 +17,9 @@ class OrdersController < ApplicationController
     if session[:cart] == []
       redirect_to root_path
     end
+    unless user_signed_in?
+      redirect_to root_path
+    end
     @order = Order.new
     @meals = Meal.all
 

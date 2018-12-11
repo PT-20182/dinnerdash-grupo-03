@@ -1,0 +1,15 @@
+<%= render '/layouts/nav' %>
+<div class="container backoffice_title">
+    <h1 class="container-fluid text-secondary h5">Editar refeição</h1>
+    <hr>
+</div>
+
+<%= render 'form', meal: @meal %>
+
+<%= link_to 'Show', @meal %> |
+<%= link_to 'Back', meals_path %>
+
+<div class="d-flex fixed-bottom bottom_navbar bg-light">
+    <p class="text-dark mr-auto">dinnerdash | todos os direitos reservados</p>
+    <p class="text-dark">desenvolvido por Antônio H.</p>
+</div>

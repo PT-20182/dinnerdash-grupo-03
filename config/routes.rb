@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :meals
+  resources :meal_categories
   get 'home/index'
   root to: "home#index"
 

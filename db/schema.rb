@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_09_210801) do
+ActiveRecord::Schema.define(version: 2018_12_11_225713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,14 +54,14 @@ ActiveRecord::Schema.define(version: 2018_12_09_210801) do
     t.index ["meal_categories_id"], name: "index_meals_on_meal_categories_id"
   end
 
-  create_table "ordel_meals", force: :cascade do |t|
+  create_table "order_meals", force: :cascade do |t|
     t.float "quantity"
     t.bigint "meal_id"
     t.bigint "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["meal_id"], name: "index_ordel_meals_on_meal_id"
-    t.index ["order_id"], name: "index_ordel_meals_on_order_id"
+    t.index ["meal_id"], name: "index_order_meals_on_meal_id"
+    t.index ["order_id"], name: "index_order_meals_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -81,13 +81,16 @@ ActiveRecord::Schema.define(version: 2018_12_09_210801) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.bigint "order_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["order_id"], name: "index_users_on_order_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "meal_categories", "meals"
   add_foreign_key "meals", "meal_categories", column: "meal_categories_id"
-  add_foreign_key "ordel_meals", "meals"
-  add_foreign_key "ordel_meals", "orders"
+  add_foreign_key "order_meals", "meals"
+  add_foreign_key "order_meals", "orders"
   add_foreign_key "orders", "users"
+  add_foreign_key "users", "orders"
 end

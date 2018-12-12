@@ -1,5 +1,6 @@
 class MealCategoriesController < ApplicationController
   before_action :set_meal_category, only: [:show, :edit, :update, :destroy]
+  before_action :check_user
 
   # GET /meal_categories
   # GET /meal_categories.json
@@ -28,8 +29,7 @@ class MealCategoriesController < ApplicationController
 
     respond_to do |format|
       if @meal_category.save
-        format.html { redirect_to @meal_category, notice: 'Meal category was successfully created.' }
-        format.json { render :show, status: :created, location: @meal_category }
+        format.html { redirect_to meal_categories_path, notice: 'Meal category was successfully created.' }
       else
         format.html { render :new }
         format.json { render json: @meal_category.errors, status: :unprocessable_entity }
@@ -42,8 +42,7 @@ class MealCategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @meal_category.update(meal_category_params)
-        format.html { redirect_to @meal_category, notice: 'Meal category was successfully updated.' }
-        format.json { render :show, status: :ok, location: @meal_category }
+        format.html { redirect_to meal_categories_path, notice: 'Meal category was successfully updated.' }
       else
         format.html { render :edit }
         format.json { render json: @meal_category.errors, status: :unprocessable_entity }
@@ -70,6 +69,12 @@ class MealCategoriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def meal_category_params
       params.require(:meal_category).permit(:name)
+    end
+
+    def check_user
+      unless user_signed_in? && current_user.admin
+        redirect_to :root
+      end
     end
 #   def index
 #     @meal_categories = MealCategory.all

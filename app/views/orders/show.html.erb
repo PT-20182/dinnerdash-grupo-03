@@ -3,7 +3,7 @@
 <p>
   <strong>Price:</strong>
   <%= @order.price %>
-  <% @order.ordelMeal.each do |item|  %>
+  <% @order.order_meals.each do |item|  %>
   <%= item.quantity %>
   <% @meal = Meal.all.where(id: item["meal_id"]).take %>
   <%= @meal.name %>

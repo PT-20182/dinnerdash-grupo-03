@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="pageTitle">
-            <div class="titleText">Bem vindo <%= @user.name%> </div>
+            <div class="titleText">Bem vindo, <%= @user.name%> </div>
             <h2>Escolha seus acompanhamentos e pratos.</h2>
 
         </div>
@@ -58,7 +58,7 @@
     <div class="finalConfirm">
         <div class="lastInf">
             <div class="catName">Esqueceu algo?</div>
-            <div><%= link_to  "clique aqui", root_path %> para retornar ao nosso menu</div>
+            <div  class="infText"><%= link_to  "clique aqui", root_path %> para retornar ao nosso menu</div>
         </div>
 
         <div class="lastInf">
@@ -72,36 +72,40 @@
             </div>
         </div>
     </div>
-    <%= link_to "finalizar e pagar", new_order_path ,class:'submitButtom justifybut'%>
-
-    <%= link_to 'Back', orders_path %>
 </div>
 
 <div class="sepline"></div>
 
 <div class= margin_left>
-    <div>Pedidos anteriores </div>
-    
-    <table>
-       <tr>
-            <th>Pedido nº</th>
-            <th>Status</th>
-            <th>Data</th>
-            <th>Preço Total</th>
-            <th>Detalhes</th>
-        </tr>
-        <% @userOrders.each do |item|%>
-            <tr>
-                <td><%= item.id %><td>
-                <td>Confirmado<td>
-                <td><%= item.created_at %><td>
-                <td><%= item.price %><td>
-                <td><%= link_to "ver itens pedidos", item %> <td>
-            </tr>
-        <%end%>
-    </table>
-
-
+    <div class="catName spaceBottom">Pedidos anteriores </div>
+    <div class="tabela">
+            <table class="tableex">
+                    <thead>
+                        <tr class="tablehd">
+                            <th>Pedido de nº</th>
+                            <th>Status</th>
+                            <th>Data</th>
+                            <th>Preço Total</th>
+                            <th>Detalhes</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody class="dadosformat">
+                        <% @userOrders.each do |item|%>
+                            <tr class="tablebd todostds">
+                                <td><%= item.id %></td>
+                                <td class="alinharcentro"><div><span class="pedidopendente">pendente</span></div> </td>
+                                <td><%= item.created_at %></td>
+                                <td>R$ <%= item.price %></td>
+                                <td class="verbuttom"><%= link_to "ver itens pedidos", item %> </td>
+                            </tr>
+                        <%end%>
+                    </tbody>
+            </table>
+    </div>
 </div>
-
-<br><br><br><br><br><br><br><br>
+<div class="footer">
+    <div class="direitosReservados">dinnerdash | todos os direitos reservados</div>
+    <div class="creditosAutor">desenvolvido por Trainee</div>
+</div>

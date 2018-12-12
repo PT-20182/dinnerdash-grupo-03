@@ -1,0 +1,277 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.cardsContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+    padding-bottom: 40px;
+}
+.card{
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+
+.pageTitle{
+    margin-left: 4em;
+    align-self: baseline;
+    color: white;
+    margin-bottom: 3em;
+}
+.navbarCustom{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: white;
+    margin-top: 10px;
+    margin-right: 4em;  
+    margin-left: 4em;
+}
+
+.linkNav{
+    font-size: 0.9em;
+    font-weight: 900;
+    color: white;
+}
+.linkNav:hover{
+    color: rgb(97, 97, 97);
+    text-decoration: none;
+}
+.pagName{
+    font-family: Amaranth;
+    font-size: 1.5em;
+}
+.headerText{
+    justify-content: space-between;
+}
+.sessionHeader{
+    font-family: serif;
+    text-decoration: none;
+    color: white;
+    padding-right: 12px;
+}
+.sessionHeader:hover{
+    text-decoration: none;
+    color: rgb(6, 207, 16);
+}
+.containerB{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 40vh;
+    justify-content: space-between;
+    background-image: asset_url("restaurant.jpeg");
+    background-size: cover;
+    
+    background-position: center;
+    z-index: 1;
+}
+.darker{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.titleText{
+    font-size: 3.5em;
+    font-weight: 900;
+}
+
+/* Categorias */
+.allCategories{
+    padding-left: 4em;
+    background-color: rgb(241, 241, 241);
+}
+.catName{
+    color: rgb(75, 75, 75);
+    font-size: 2em;
+}
+.addButtom{
+    background-color: rgb(61, 180, 61);
+    color: white;
+    width: 100%;
+    height: 30px;
+    font-size: 0.8em;
+    border-radius: 3px;
+    margin-bottom: 0.2em;
+    border: 0px;
+    cursor: pointer;
+}
+.addButtom:hover{
+    background-color: rgb(47, 141, 47);
+}
+
+.optionSelect{
+    width: 100%;
+    height: 30px;
+    background-color: white;
+    border: 1px solid;
+    border-color: rgb(133, 133, 133);
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.priceText{
+    color: rgb(5, 170, 14);
+    margin-bottom: 10px;
+}
+.quantText{
+    color: rgb(126, 126, 126);
+    margin-bottom: 2em;
+}
+.descText{
+    color: rgb(133, 133, 133);
+    margin-bottom: 10px;
+}
+.sepline{
+    height: 1px;
+    background-color: rgb(180, 180, 180);
+}
+.margin_left{
+    margin-left: 4em;
+    margin-right: 4em;
+    margin-top: 2em;
+}
+.carrinho{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    margin-bottom: 2em;
+}
+.carrinhoCard{
+    width: 40em;
+    margin-right: 80px;
+    display: flex;
+    height: 8em;
+    flex-direction: row;
+    margin-bottom: 15px;
+    justify-content: space-between;
+}
+.paddingr{
+    padding-right: 1em;
+}
+.carrinhoImageCard{
+    height: 8em;
+    border: 1px solid rgb(172, 172, 172);
+}
+.carrinhoInformation{
+    display: flex;
+    flex-direction: column;
+}
+.mealName{
+    color: rgb(75, 75, 75);
+    font-size: 1em;
+}
+.infText{
+    color: rgb(109, 109, 109);
+    font-size: 1em;
+}
+.imageAndInf{
+    display: flex;
+    flex-direction: row;
+}
+.carrinhoForm{
+    flex-direction: column;
+    width: 30%;
+}
+
+.rmButtom{
+    background-color: rgb(255, 255, 255);
+    color: rgb(194, 45, 45);
+    width: 100%;
+    height: 30px;
+    font-size: 0.8em;
+    border-radius: 3px;
+    margin-bottom: 0.2em;
+    border: 0px;
+    cursor: pointer;
+    border: solid red 1px;
+}
+.rmButtom:hover{
+    background-color: rgb(243, 243, 243);
+}
+
+.finalInf{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+.logText{
+    color: rgb(126, 126, 126);
+    margin-bottom: 1em;
+}
+.finalprice{
+    color: rgb(5, 170, 14);
+}
+.spaceBottom{
+    margin-bottom: 0.2em;
+}
+.butoes{
+    display: flex;
+    flex-direction: row;
+    width: 50em;
+    height: 1.2em;
+    justify-content: flex-start;
+}
+.funciona{
+    border: 1px solid rgb(63, 221, 63);
+    text-align: center;
+    line-height: 3em;
+    font-size: 0.8em;
+    height: 3em;
+    width: 80%;
+    background-color:white;
+    color:  rgb(63, 221, 63);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.justifybut{
+    border: 1px solid rgb(63, 221, 63);
+    text-align: center;
+    line-height: 3em;
+    font-size: 0.8em;
+    height: 3em;
+    width: 80%;
+    background-color:white;
+    color:  rgb(63, 221, 63);
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.justifybut:hover{
+    background-color: rgb(235, 235, 235);
+    text-decoration: none;
+    color:rgb(63, 221, 63);
+}
+
+
+.imageMeal{
+    // height: em;
+    position: relative;
+    // margin-bottom: 10em;
+    text-align: left;
+}
+.cardTitle{
+    position: absolute;
+    top: 12em;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 3em;
+    padding-left: 1.3em;
+    color: white;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.filterText{
+    color: white;
+    opacity: 1 !important;
+}

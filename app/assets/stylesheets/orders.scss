@@ -1,0 +1,39 @@
+// Place all the styles related to the Orders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.containerFinalOrder{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 40vh;
+    justify-content: space-between;
+    background-image: asset_url("foodCart.jpeg");
+    background-size: cover;
+    
+    background-position: center;
+    z-index: 1;
+}
+
+.finalConfirm{
+    margin-top: 4em;
+    margin-bottom: 4em;
+    display: flex;
+    flex-direction: row;
+}
+
+.lastInf{
+    display: flex;
+    flex-direction: column;
+    width: 40em;
+    margin-right: 80px;
+}
+
+.grayBack{
+    background-color: rgb(241, 241, 241);
+}
+.centralizeTable{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

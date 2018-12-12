@@ -14,7 +14,11 @@
                     <% @meal_categories.each do |category| %>
                     <tr class="tablebd todostds">
                         <td><%= category.name %> </td>
-                        <td> 4 </td>
+                        <% number =0%>
+                        <% category.meals.each do |bla| %>
+                            <% number +=1 %>
+                        <% end %>
+                        <td> <%= number %></td>
                         <td> <%= category.created_at %></td>
                         <td class="editbuttom"><%= link_to  "editar", edit_meal_category_path(category) %></td>
                         <td class="excluirbuttom"><%= link_to 'excluir', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>

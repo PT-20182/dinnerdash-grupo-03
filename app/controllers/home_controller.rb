@@ -4,4 +4,5 @@ class HomeController < ApplicationController
         @meals = Meal.all
         @meal_categories = MealCategory.all
     end
+
 end

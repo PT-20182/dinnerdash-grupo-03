@@ -64,6 +64,7 @@ class OrdersController < ApplicationController
     # Adicionando valores na order e salvando
     @order.price = totalprice
     @order.user_id = current_user.id
+    @order.status = 'pendente'
     @order.save
 
     # Salvando a order no User

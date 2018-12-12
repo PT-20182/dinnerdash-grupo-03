@@ -28,3 +28,12 @@
     width: 40em;
     margin-right: 80px;
 }
+
+.grayBack{
+    background-color: rgb(241, 241, 241);
+}
+.centralizeTable{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

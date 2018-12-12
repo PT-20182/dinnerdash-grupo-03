@@ -17,8 +17,7 @@
     </div>
 </div>
 
-
-<div class= margin_left>
+<div class= "margin_left">
     <div class="catName spaceBottom"> O seu pedido: </div>
     <div class="quantText"> Confira os itens no seu carrinho antes de finalizar o pedido. </div>
     <div class="carrinho">
@@ -75,10 +74,10 @@
 </div>
 
 <div class="sepline"></div>
-
-<div class= margin_left>
-    <div class="catName spaceBottom">Pedidos anteriores </div>
-    <div class="tabela">
+<div class= "margin_left">
+    <div class ="centralizeTable">
+        <div class="catName spaceBottom">Pedidos anteriores </div>
+        <div class="tabela">
             <table class="tableex">
                     <thead>
                         <tr class="tablehd">
@@ -95,7 +94,15 @@
                         <% @userOrders.each do |item|%>
                             <tr class="tablebd todostds">
                                 <td><%= item.id %></td>
-                                <td class="alinharcentro"><div><span class="pedidopendente">pendente</span></div> </td>
+                                <% if item.status == 'pendente' %>
+                                    <td class="alinharcentro"><div><span class="pedidopendente">pendente</span></div> </td>
+                                <% end %>
+                                <% if item.status == 'entregue' %>
+                                    <td class="alinharcentro"><span class="pedidocancelado">cancelado</span> </td>
+                                <% end %>
+                                <% if item.status == 'cancelado' %>
+                                    <td class="alinharcentro"><span class="pedidoentregue">entregue</span> </td>
+                                <% end %>
                                 <td><%= item.created_at %></td>
                                 <td>R$ <%= item.price %></td>
                                 <td class="verbuttom"><%= link_to "ver itens pedidos", item %> </td>
@@ -103,6 +110,7 @@
                         <%end%>
                     </tbody>
             </table>
+        </div>
     </div>
 </div>
 <div class="footer">

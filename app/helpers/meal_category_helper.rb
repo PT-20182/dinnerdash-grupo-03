@@ -1,0 +1,2 @@
+module MealCategoryHelper
+end

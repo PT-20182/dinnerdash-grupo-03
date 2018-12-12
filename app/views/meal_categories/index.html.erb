@@ -1,0 +1,60 @@
+ <div class="containerA">
+    <div class="darker">
+        <div class="navbarCustom">
+            <div class="pagName">dinnerdash</div>
+            <div>
+                <div><span id="yellow">Backoffice</span> <a class="linkNav" href="">perfil</a> | <a class="linkNav" href="">sair</a></div>
+            </div>
+        </div>
+        <div class="pageTitle">
+            <div id="Backoff">Backoffice</div>
+            <h2>Gerencie pedidos, refeições e mais.</h2>
+
+        </div>
+    </div>
+</div>
+<div class="optionBar">
+    <div class="marginBar">
+        <a class="optionBarLinks" href="">Pedido</a>
+        <a class="optionBarLinks"href="">Usuários</a>
+        <a class="optionBarLinks"href="">Refeições</a>
+        <a><%= link_to  "Categorias de refeição", meal_categories_path %></a>
+    </div>
+</div>
+<div class="tabela">
+        <table class="tableex">
+                <thead>
+                    <tr class="tablehd">
+                        <th>Nome</th>
+                        <th>Nº de Refeições</th>
+                        <th>Cadastrada em</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody class="dadosformat">
+                    <% @meal_categories.each do |category| %>
+                    <tr>
+                        <td><%= category.name %> </td>
+                        <td> 4 </td>
+                        <td> <%= category.created_at %></td>
+                        <td class="editbuttom"><%= link_to  "editar", edit_meal_category_path(category) %></td>
+                        <td class="excluirbuttom"><%= link_to 'excluir', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    </tr>
+                    <% end %>
+                </tbody>
+        </table>
+</div>
+<div class="margin_left">
+    <div class="butoes">
+        <div class="loginLink butoes">
+            <%= link_to "Nova categoria de refeição",  new_meal_category_path, class:'submitButtom justifybut', style:"text-decoration: none;"%>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <div class="direitosReservados">dinnerdash | todos os direitos reservados</div>
+    <div class="creditosAutor">desenvolvido por Trainee</div>
+</div>

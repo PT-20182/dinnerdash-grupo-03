@@ -1,0 +1,25 @@
+<%= render  "layouts/nav" %>
+<div class="tabela">
+  <table class="tableex">
+    <thead>
+      <tr class="tablehd">
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Data</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody class="dadosformat">
+        <% @users.each do |user| %>
+        <tr>
+            <td><%= user.name %> </td>
+            <td><%= user.email %> </td>
+            <td> <%= user.created_at %></td>
+            <td class="editbuttom"><%= link_to  "editar",edit_user_registration_path(user) %></td>
+            <td class="excluirbuttom"><%= link_to 'excluir', registration_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>

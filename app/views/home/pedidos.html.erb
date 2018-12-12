@@ -1,20 +1,19 @@
 <%= render 'layouts/cartHead' %>
 
 <div class= "margin_left">
-    <div class="catName spaceBottom"> O seu pedido: </div>
-    <div class="quantText"> Confira os itens no seu carrinho antes de finalizar o pedido. </div>
+    <div class="catName spaceBottom">Último pedido </div>
     <div class="carrinho">
         <% totalPrice = 0%>
-        <% session[:cart].each do |item| %>
+        <% @order.order_meals.each do |item| %>
             <div class="carrinhoCard">
-                <% cartMeal = @meals.where(id: item["id"]).take %>
+                <% cartMeal = @meals.where(id: item.meal_id).take %>
                 <div class="imageAndInf">
                     <div class="paddingr"><%= image_tag url_for(cartMeal.image), class:"carrinhoImageCard"%> </div>
                     <div class="carrinhoInformation">
                         <div class="mealName"><%= cartMeal.name %></div>
-                        <div class="infText">Quantidade: <%= item["number"]%></div>
-                        <div class="infText">Preço unitário: R$ <%= item["price"] %></div>
-                        <% totalpriceMeal = cartMeal.price.to_f * item["number"].to_f %>
+                        <div class="infText">Quantidade: <%= item.quantity%></div>
+                        <div class="infText">Preço unitário: R$ <%= cartMeal.price %></div>
+                        <% totalpriceMeal = cartMeal.price.to_f * item.quantity.to_f %>
                         <div class="infText">Preço total: R$ <%= totalpriceMeal %></div>
                     </div>
                 </div>
@@ -26,37 +25,12 @@
                 <% totaldisp.each do |i| %>
                     <% optionsarray.push([i.to_s, i]) %>
                 <% end %>
-                <div class="carrinhoForm">
-                    <%= form_tag(removeitem_path(id: cartMeal.id), method: :put) do |f| %>
-                        <div class="infText">Quantidade a excluir:</div>
-                        <div><%= select_tag(:quant, options_for_select(optionsarray), class: "optionSelect") %></div>
-                        <div><%= submit_tag("remover do meu prato", class:"rmButtom") %></div>
-                    <% end %>
-                </div>
             </div>
         <%end%>
     </div>
     <div class="sepline"></div>
-    <div class="finalConfirm">
-        <div class="lastInf">
-            <div class="catName">Esqueceu algo?</div>
-            <div  class="infText"><%= link_to  "clique aqui", root_path %> para retornar ao nosso menu</div>
-        </div>
-
-        <div class="lastInf">
-            <div class="catName spaceBottom"> Preço total do pedido: 
-            <span class="finalprice"> R$ <%= totalPrice %></span> 
-            </div>
-            <div class="butoes">
-                <div class="loginLink butoes">
-                    <%= render 'form', order: @order %>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
-<div class="sepline"></div>
 <div class= "margin_left">
     <div class ="centralizeTable">
         <div class="catName spaceBottom">Pedidos anteriores </div>
@@ -95,8 +69,4 @@
             </table>
         </div>
     </div>
-</div>
-<div class="footer">
-    <div class="direitosReservados">dinnerdash | todos os direitos reservados</div>
-    <div class="creditosAutor">desenvolvido por Trainee</div>
 </div>

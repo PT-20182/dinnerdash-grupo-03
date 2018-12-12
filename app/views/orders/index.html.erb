@@ -1,4 +1,4 @@
-<%= render  "layouts/backoficehead" %>
+<%= render  "layouts/nav" %>
 <div class="tabela">
   <table class="tableex">
     <thead>
@@ -29,7 +29,7 @@
             <td> <%= order.created_at %></td>
             <td> <%= @users.find(order.user_id).name %></td>
             <td> R$ <%= order.price %> </td> 
-            <td> ver itens pedidos </td>
+            <td> <%= link_to  "ver itens pedidos", order_path(order) %></td>
             <td class="editbuttom"><%= link_to  "editar", edit_order_path(order) %></td>
             <td class="excluirbuttom"><%= link_to 'excluir', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>

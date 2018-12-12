@@ -1,7 +1,7 @@
  <div class="containerA">
     <div class="darker">
         <div class="top_navbar container d-flex">
-            <div class="mr-auto p-2"><a class="text-light font-weight-bold logo" href="#">Dinnerdash</a></div>
+            <div class="mr-auto p-2"><%= link_to "Dinnerdash", root_path , class:"text-light font-weight-bold logo"%></div>
             <% if user_signed_in? %>
                 <%if current_user.admin == true %>
                     <div class="p-2"><%= link_to  "backoffice", orders_path , class:"text-warning current font-weight-bold"%></div>

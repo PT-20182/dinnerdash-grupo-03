@@ -1,0 +1,18 @@
+<div class="containerFinalOrder">
+    <div class="darker">
+        <div class="navbarCustom">
+            <div class="pagName">dinnerdash</div>
+            <div>
+                <% if user_signed_in? %>
+                <% else %>
+                <div class="headerText"><%= link_to "Entrar", new_user_session_path , class:"sessionHeader" %><%= link_to  "cadastro", new_user_registration_path, class:"sessionHeader" %></div>
+                <% end %>
+            </div>
+        </div>
+        <div class="pageTitle">
+            <div class="titleText">Bem vindo, <%= @user.name%> </div>
+            <h2>Escolha seus acompanhamentos e pratos.</h2>
+
+        </div>
+    </div>
+</div>

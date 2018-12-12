@@ -1,16 +1,4 @@
-    <div class="tcontainer">
-        <div class="top_navbar container d-flex">
-            <div class="mr-auto p-2"><a class="text-light font-weight-bold logo" href="#">Dinnerdash</a></div>
-            <div class="p-2"><a class="text-light current font-weight-bold" href="#">backoffice</a></div>
-            <div class="p-2"><a class="text-warning font-weight-bold" href="#">perfil</a></div>
-            <div class="p-2"><a class="text-light font-weight-bold" href="#">sair</a></div>
-        </div>
-
-        <div class="container top_text">
-            <h1 class="text-light"> Seu Perfil</h1>
-            <p class="text-light">Atualize seus dados pessoais e senha.</p>
-        </div>
-    </div>
+<%= render 'layouts/nav' %>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class:"container perfil_form", method: :put }) do |f| %>
       <%= devise_error_messages! %>

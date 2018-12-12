@@ -84,7 +84,7 @@ class OrdersController < ApplicationController
     session[:cart] = []
 
     # Redirecinando a view dessa nova order criada
-    redirect_to orders_path
+    redirect_to pedidos_path
   
     #   Scaffold Code:
     # respond_to do |format|
@@ -106,12 +106,12 @@ class OrdersController < ApplicationController
     if @order.status != params[:status]
       @order.update(status: params[:status])
     end
-    redirect_to orders_path
+    redirect_to control_users_index_path
     
   end
   def delete
     @order.destroy
-    redirect_to orders_path
+    redirect_to control_users_index_path
   end
   # DELETE /orders/1
   # DELETE /orders/1.json

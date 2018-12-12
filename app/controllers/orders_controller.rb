@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
   def index
     @orders = Order.all
     @users = User.all
+    @meals = Meal.all
     flash[:error] = "Entre como administrador para visualizar essas Informações"
   end
 
@@ -94,12 +95,12 @@ class OrdersController < ApplicationController
     if @order.status != params[:status]
       @order.update(status: params[:status])
     end
-    redirect_to control_users_index_path
+    redirect_to orders_path
     
   end
   def delete
     @order.destroy
-    redirect_to control_users_index_path
+    redirect_to orders_path
   end
   # DELETE /orders/1
   # DELETE /orders/1.json

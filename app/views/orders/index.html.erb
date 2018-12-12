@@ -29,7 +29,53 @@
                       <td><%= item.created_at %></td>
                       <td><%= @users.find(item.user_id).name %> </td>
                       <td>R$ <%= item.price %></td>
-                      <td> <%= link_to  "ver itens pedidos", order_path(item.id) %></td>
+                      <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal<%=item.id%>">
+                          ver pedidos anteriores
+                        </button>
+                      </td>
+                      <div class="modal fade" id="modal<%=item.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Detalhes das refeições</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="carrinho">
+                                    <% totalPrice = 0%>
+                                    <% item.order_meals.each do |order_meal| %>
+                                        <div class="carrinhoCard">
+                                            <% cartMeal = @meals.where(id: order_meal.meal_id).take %>
+                                            <div class="imageAndInf">
+                                                <div class="paddingr"><%= image_tag url_for(cartMeal.image), class:"carrinhoImageCard"%> </div>
+                                                <div class="carrinhoInformation">
+                                                    <div class="mealName"><%= cartMeal.name %></div>
+                                                    <div class="infText">Quantidade: <%= order_meal.quantity%></div>
+                                                    <div class="infText">Preço unitário: R$ <%= cartMeal.price %></div>
+                                                    <% totalpriceMeal = cartMeal.price.to_f * order_meal.quantity.to_f %>
+                                                    <div class="infText">Preço total: R$ <%= totalpriceMeal %></div>
+                                                </div>
+                                            </div>
+                                            <% totalPrice += totalpriceMeal %>
+
+                                            <% totaldisp = (1..item["number"].to_f).to_a %>
+                                            <% totaldisp = totaldisp.reverse %>
+                                            <% optionsarray = []%>
+                                            <% totaldisp.each do |i| %>
+                                                <% optionsarray.push([i.to_s, i]) %>
+                                            <% end %>
+                                        </div>
+                                    <% end %>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
                       <td class="editbuttom"><%= link_to  "editar", edit_order_path(item) %></td>
                       <td class="excluirbuttom"><%= link_to 'excluir', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                   </tr>
@@ -37,6 +83,35 @@
           </tbody>
   </table>
 </div>
+
+<% if false %>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            ...
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+        </div>
+    </div>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br>
+<% end %>
 <div class="footer">
     <div class="direitosReservados">dinnerdash | todos os direitos reservados</div>
     <div class="creditosAutor">desenvolvido por Trainee</div>

@@ -1,4 +1,22 @@
-<%= render 'layouts/cartHead' %>
+<div class="tcontainer_perfil">
+    <div class="top_navbar container d-flex">
+        <div class="mr-auto p-2"><%= link_to "Dinnerdash", root_path , class:"text-light font-weight-bold logo"%></div>
+        <% if user_signed_in? %>
+            <%if current_user.admin == true %>
+                <div class="p-2"><%= link_to  "backoffice", orders_path , class:"text-warning current font-weight-bold"%></div>
+            <%end%>
+            <div class="p-2"><%= link_to  "Editar perfil",  edit_user_registration_path, class:"text-light font-weight-bold"  %> </div>
+            <div class="p-2"><%= link_to  "Sair", destroy_user_session_path, method: :delete,class:"text-light font-weight-bold" %></div>
+        <% else %>
+        <div class="headerText"><%= link_to "Entrar", new_user_session_path , class:"sessionHeader" %><%= link_to  "cadastro", new_user_registration_path, class:"sessionHeader" %></div>
+        <%end%>
+    </div>
+
+    <div class="container top_text">
+        <h1 class="text-light"> bem vindo, <%= current_user.name %></h1>
+        <p class="text-light">Veja seus pedidos.</p>
+    </div>
+</div>
 
 <div class= "margin_left">
     <div class="catName spaceBottom">Último pedido </div>

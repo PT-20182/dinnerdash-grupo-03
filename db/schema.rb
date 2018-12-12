@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2018_12_12_043305) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,18 +41,20 @@ ActiveRecord::Schema.define(version: 2018_12_12_043305) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "meal_id"
-    t.index ["meal_id"], name: "index_meal_categories_on_meal_id"
+
+#     t.bigint "meal_id"
+#     t.index ["meal_id"], name: "index_meal_categories_on_meal_id"
   end
 
   create_table "meals", force: :cascade do |t|
     t.string "name"
-    t.string "description"
+    t.text "description"
     t.float "price"
+    t.boolean "available"
+    t.bigint "meal_category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "meal_categories_id"
-    t.index ["meal_categories_id"], name: "index_meals_on_meal_categories_id"
+    t.index ["meal_category_id"], name: "index_meals_on_meal_category_id"
   end
 
   create_table "order_meals", force: :cascade do |t|
@@ -89,10 +92,12 @@ ActiveRecord::Schema.define(version: 2018_12_12_043305) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+
+  add_foreign_key "meals", "meal_categories"
   add_foreign_key "meal_categories", "meals"
-  add_foreign_key "meals", "meal_categories", column: "meal_categories_id"
   add_foreign_key "order_meals", "meals"
   add_foreign_key "order_meals", "orders"
   add_foreign_key "orders", "users"
   add_foreign_key "users", "orders"
+
 end

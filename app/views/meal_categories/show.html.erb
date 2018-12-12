@@ -1,2 +1,10 @@
-<h1>MealCategories#show</h1>
-<p>Find me in app/views/meal_categories/show.html.erb</p>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @meal_category.name %>
+</p>
+
+<%= link_to 'Edit', edit_meal_category_path(@meal_category) %> |
+<%= link_to 'Back', meal_categories_path %>

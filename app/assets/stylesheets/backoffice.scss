@@ -1,0 +1,64 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    // overflow: hidden;
+    font-family: 'Open Sans', sans-serif;
+    src: url("//fonts.googleapis.com/css?family=Open+Sans");
+}
+
+.logo{
+    font-family: 'Amaranth', sans-serif;
+    src: url("http://fonts.googleapis.com/css?family=Amaranth" );
+}
+
+.tcontainer_backoffice{
+    /* background-image: url("/home/ahmoura/Documentos/cjr/dinner-dash-20182-front/imagens/helloquence-61189.jpg"); */
+    background-image: url("backoffice.jpg"); 
+    background-repeat: no-repeat;
+    background-attachment: local;
+    background-position: center;
+    background-size: cover;
+    height: 50vh;
+    background-color: #CCCCCC;
+    background-blend-mode: multiply;
+}
+
+.text-light .current{
+    color: #FFD700;
+}
+
+.button_form:hover{
+    width: 25vw;
+    height: 6vh;
+    background-color: #FFFFFF;
+    border: 2px solid #39cc6c;
+    color: #39cc6c;
+    border-radius: 5px;
+}
+
+.button_form{
+    width: 25vw;
+    height: 6vh;
+    background-color: #39cc6c;
+    border: 2px solid #39cc6c;
+    color: #FFFFFF;
+    border-radius: 5px;
+}
+
+.backoffice_input{
+    width: 40vw;
+    height: 6vh;
+}
+
+hr{
+    padding: 0px;
+    margin: 0px;
+}
+
+.backoffice_form{
+    margin: 2vh 2vh 0vh 2vh;
+}
+
+.backoffice_title{
+    padding: 3em 0em;
+}

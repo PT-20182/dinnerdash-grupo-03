@@ -1,7 +1,7 @@
-<h1>MealCategories#new</h1>
-<p>Find me in app/views/meal_categories/new.html.erb</p>
 
-<%= form_with model: @category do |form| %>
-  <%= form.text_field :name, placeholder: "name" %>
-  <%= form.submit %>
-<% end %>
+<h1>New Meal Category</h1>
+
+<%= render 'form', meal_category: @meal_category %>
+
+<%= link_to 'Back', meal_categories_path %>
+

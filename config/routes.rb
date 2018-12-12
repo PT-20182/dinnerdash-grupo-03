@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-
-  get 'meals/index'
-  get 'meals/show'
-  get 'meals/new'
-  get 'meals/edit'
+  resources :meals
   resources :meal_categories
   resources :orders
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations'}

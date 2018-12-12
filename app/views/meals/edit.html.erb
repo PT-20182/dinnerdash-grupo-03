@@ -1,2 +1,15 @@
-<h1>Meals#edit</h1>
-<p>Find me in app/views/meals/edit.html.erb</p>
+
+<%= render '/layouts/nav' %>
+<div class="container backoffice_title">
+    <h1 class="container-fluid text-secondary h5">Editar refeição</h1>
+    <hr>
+</div>
+
+<%= render 'form', meal: @meal %>
+
+<%= link_to 'Show', @meal %>
+
+<div class="d-flex fixed-bottom bottom_navbar bg-light">
+    <p class="text-dark mr-auto">dinnerdash | todos os direitos reservados</p>
+    <p class="text-dark">desenvolvido por Antônio H.</p>
+</div>

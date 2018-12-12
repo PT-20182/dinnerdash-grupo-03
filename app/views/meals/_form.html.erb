@@ -1,0 +1,62 @@
+<%= form_with(model: meal, local: true, class:"backoffice_form") do |form| %>
+  <% if meal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(meal.errors.count, "error") %> prohibited this meal from being saved:</h2>
+
+      <ul>
+      <% meal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="container">
+    <div class="form-row d-flex justify-content-between">
+      <div class="field">
+        <%= form.label :Nome, class:"" %>
+        <%= form.text_field :name, class:"form-control backoffice_input" %>
+      </div>
+
+      <div class="field">
+        <%= form.label :Categoria, class:"" %>
+        <%= form.text_field :meal_category_id, class:"form-control backoffice_input" %>
+      </div>
+    </div>
+    <br>
+
+    <div class="field">
+      <div class="form-row d-flex justify-content-between">
+        <%= form.label :Descrição, class:"" %>
+        <%= form.text_area :description, class:"form-control" %>
+      </div>
+    </div>
+    <br>
+
+    <div class="form-row  d-flex justify-content-between">
+      <div class="field">
+        <%= form.label :Preço, class:"" %>
+        <%= form.number_field :price, step: :any, class:"form-control  backoffice_input", id:"inputGroupFile03", 'aria-describedby':"inputGroupFileAddon03" %>
+      </div>
+
+      <div class="field">
+        <%= form.label :Foto %><br>
+        <div class="input-group mb-3">
+          <div class="custom-file">
+            <%= form.file_field :image, class:"custom-file-input backoffice_input" %>
+            <label class="custom-file-label" for="inputGroupFile03" >Escolher arquivo...</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= form.check_box :available, class:"field" %>
+      <%= form.label :Esta_refeição_não_estará_disponível_no_cardápio %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "Atualizar Refeição", class:"button_form" %>
+      <%= link_to 'Voltar', meals_path, class:"btn btn-secondary" %>
+    </div>
+  </div>
+<% end %>

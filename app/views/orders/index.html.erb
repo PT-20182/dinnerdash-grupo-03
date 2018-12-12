@@ -29,7 +29,7 @@
                       <td><%= item.created_at %></td>
                       <td><%= @users.find(item.user_id).name %> </td>
                       <td>R$ <%= item.price %></td>
-                      <td> <%= link_to  "ver itens pedidos", order_path(item) %></td>
+                      <td> <%= link_to  "ver itens pedidos", order_path(item.id) %></td>
                       <td class="editbuttom"><%= link_to  "editar", edit_order_path(item) %></td>
                       <td class="excluirbuttom"><%= link_to 'excluir', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                   </tr>

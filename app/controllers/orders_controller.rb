@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
-    @meal = Meal.find(params[:id])
+    @order = Order.find(params[:id])
   end
 
   # GET /orders/new

@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_11_175109) do
+ActiveRecord::Schema.define(version: 2018_12_12_043305) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +41,9 @@ ActiveRecord::Schema.define(version: 2018_12_11_175109) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
+#     t.bigint "meal_id"
+#     t.index ["meal_id"], name: "index_meal_categories_on_meal_id"
   end
 
   create_table "meals", force: :cascade do |t|
@@ -53,6 +57,25 @@ ActiveRecord::Schema.define(version: 2018_12_11_175109) do
     t.index ["meal_category_id"], name: "index_meals_on_meal_category_id"
   end
 
+  create_table "order_meals", force: :cascade do |t|
+    t.float "quantity"
+    t.bigint "meal_id"
+    t.bigint "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["meal_id"], name: "index_order_meals_on_meal_id"
+    t.index ["order_id"], name: "index_order_meals_on_order_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.float "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.string "status"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -62,9 +85,19 @@ ActiveRecord::Schema.define(version: 2018_12_11_175109) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.bigint "order_id"
+    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["order_id"], name: "index_users_on_order_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+
   add_foreign_key "meals", "meal_categories"
+  add_foreign_key "meal_categories", "meals"
+  add_foreign_key "order_meals", "meals"
+  add_foreign_key "order_meals", "orders"
+  add_foreign_key "orders", "users"
+  add_foreign_key "users", "orders"
+
 end

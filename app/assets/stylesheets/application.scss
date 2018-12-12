@@ -14,8 +14,11 @@
  @import "bootstrap";
  @import "perfil";
  @import "backoffice";
-
-
+ @import "orders";
+ @import "home";
+ @import "tabela";
+ @import "meal_categories";
+ 
 /* Login Screen */
 .containerLogin{
     display: flex;
@@ -148,3 +151,23 @@
     font-size: 1.2em;
 }
 /* End of login screen */
+
+/* Footer */
+.footer{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    /* position: relative; */
+    justify-content: space-between;
+    background-color: rgb(177, 175, 175);
+    height: 2.5em;
+    z-index: 2;
+}
+.direitosReservados{
+    margin-left: 4em;
+}
+.creditosAutor{
+    margin-right: 4em;
+}

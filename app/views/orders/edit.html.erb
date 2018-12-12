@@ -1,0 +1,8 @@
+<h1>Editing Order</h1>
+<% options = ["entregue","pendente","cancelado"] %>
+<%= form_tag( order_path(@order), method: :put) do %>
+    <%= select_tag(:status, options_for_select(options), class: "optionSelect") %>
+    <%= submit_tag("Adicionar", class:"addButtom") %>
+<% end %>
+<%= link_to 'Show', @order %> |
+<%= link_to 'Back', orders_path %>

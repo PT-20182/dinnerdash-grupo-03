@@ -1,6 +1,13 @@
 <h1>Editing Meal Category</h1>
 
-<%= render 'form', meal_category: @meal_category %>
+<%# render 'form', meal_category: @meal_category %>
 
-<%= link_to 'Show', @meal_category %> |
-<%= link_to 'Back', meal_categories_path %>
+<%# link_to 'Show', @meal_category %> 
+<%# link_to 'Back', meal_categories_path %>
+
+<h1>MealCategories#edit</h1>
+<p>Find me in app/views/meal_categories/edit.html.erb</p>
+<%= form_with model: @category do |form| %>
+    <%= form.text_field :name, placeholder: "nome" %>
+    <%= form.submit %>
+<% end %>

@@ -1,0 +1,44 @@
+<%= render  "layouts/backoficehead" %>
+<div class="tabela">
+  <table class="tableex">
+    <thead>
+      <tr class="tablehd">
+        <th>Pedido ed nº</th>
+        <th>Status</th>
+        <th>Data</th>
+        <th>Usuário</th>
+        <th>Preço Total</th>
+        <th>Detalhes</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody class="dadosformat">
+        <% @orders.each do |order| %>
+        <tr>
+            <td><%= order.id %> </td>
+            <% if order.status == 'pendente' %>
+              <td class="alinharcentro"><div><span class="pedidopendente">pendente</span></div> </td>
+            <% end %>
+            <% if order.status == 'cancelado' %>
+              <td class="alinharcentro"><span class="pedidocancelado">cancelado</span> </td>
+            <% end %>
+            <% if order.status == 'entregue' %>
+              <td class="alinharcentro"><span class="pedidoentregue">entregue</span> </td>
+            <% end %>
+            <td> <%= order.created_at %></td>
+            <td> <%= @users.find(order.user_id).name %></td>
+            <td> R$ <%= order.price %> </td> 
+            <td> ver itens pedidos </td>
+            <td class="editbuttom"><%= link_to  "editar", edit_order_path(order) %></td>
+            <td class="excluirbuttom"><%= link_to 'excluir', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="footer">
+    <div class="direitosReservados">dinnerdash | todos os direitos reservados</div>
+    <div class="creditosAutor">desenvolvido por Trainee</div>
+</div>

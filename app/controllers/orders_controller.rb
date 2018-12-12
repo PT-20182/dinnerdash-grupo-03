@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   helper_method :create
+  before_action :check_user
   # GET /orders
   # GET /orders.json
   def index
@@ -132,5 +133,11 @@ class OrdersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       params.require(:order).permit(:status)
+    end
+
+    def check_user
+      unless user_signed_in? && current_user.admin
+        redirect_to :root
+      end
     end
 end

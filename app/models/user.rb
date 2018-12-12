@@ -8,10 +8,16 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   before_destroy :delete_orders
-  
+  before_create :default_user
+
   def delete_orders
     self.orders.each do |item|
       item.destroy
     end
   end
+
+  def default_user
+    self.admin = false
+  end
+  
 end

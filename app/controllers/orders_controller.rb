@@ -1,20 +1,13 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   helper_method :create
-  before_action :check_user
+  before_action :check_user, only: [:index, :edit]
   # GET /orders
   # GET /orders.json
   def index
     @orders = Order.all
     @users = User.all
     flash[:error] = "Entre como administrador para visualizar essas Informações"
-    if user_signed_in?
-      if current_user.admin == false
-        redirect_to root_path
-      end
-    else
-      redirect_to root_path
-    end
   end
 
   # GET /orders/1

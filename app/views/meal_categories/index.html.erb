@@ -1,26 +1,4 @@
- <div class="containerA">
-    <div class="darker">
-        <div class="navbarCustom">
-            <div class="pagName">dinnerdash</div>
-            <div>
-                <div><span id="yellow">Backoffice</span> <a class="linkNav" href="">perfil</a> | <a class="linkNav" href="">sair</a></div>
-            </div>
-        </div>
-        <div class="pageTitle">
-            <div id="Backoff">Backoffice</div>
-            <h2>Gerencie pedidos, refeições e mais.</h2>
-
-        </div>
-    </div>
-</div>
-<div class="optionBar">
-    <div class="marginBar">
-        <a class="optionBarLinks" href="">Pedido</a>
-        <a class="optionBarLinks"href="">Usuários</a>
-        <a class="optionBarLinks"href="">Refeições</a>
-        <a><%= link_to  "Categorias de refeição", meal_categories_path %></a>
-    </div>
-</div>
+<%= render "layouts/backoficehead" %>
 <div class="tabela">
         <table class="tableex">
                 <thead>

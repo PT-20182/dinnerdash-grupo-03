@@ -12,6 +12,7 @@ class MealCategoriesController < ApplicationController
   end
 
   def show
+    @category = MealCategory.find(params[:id])
   end
 
   def new

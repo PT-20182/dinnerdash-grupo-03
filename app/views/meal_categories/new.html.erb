@@ -1,7 +1,9 @@
+<%= render 'layouts/nav', meal_category: @meal_category %>
 
-<h1>New Meal Category</h1>
+<div class="container backoffice_title">
+    <h1 class="container-fluid text-secondary h5">Nova categoria de refeições</h1>
+    <hr>
+</div>
 
 <%= render 'form', meal_category: @meal_category %>
-
-<%= link_to 'Back', meal_categories_path %>
 

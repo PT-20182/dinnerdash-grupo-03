@@ -1,3 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<!-- CORRIGIR HEAD PARA LOCAL CORRETO-->
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil - Dinner Dash</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="../assets/perfil.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+</head>
+
+
+<body>
+    <div class="tcontainer">
+        <div class="top_navbar container d-flex">
+            <div class="mr-auto p-2"><a class="text-light font-weight-bold logo" href="#">Dinnerdash</a></div>
+            <div class="p-2"><a class="text-light current font-weight-bold" href="#">backoffice</a></div>
+            <div class="p-2"><a class="text-warning font-weight-bold" href="#">perfil</a></div>
+            <div class="p-2"><a class="text-light font-weight-bold" href="#">sair</a></div>
+        </div>
+
+        <div class="container top_text">
+            <h1 class="text-light"> Seu Perfil</h1>
+            <p class="text-light">Atualize seus dados pessoais e senha.</p>
+        </div>
+    </div>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class:"container perfil_form", method: :put }) do |f| %>
+      <%= devise_error_messages! %>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Nome</label>
+                <input type="text" class="form-control" id="input_name">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Email</label>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "input_name" %>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputPassword4">Nova senha(deixe em branco caso não queira alterar)</label>
+                    <%= f.password_field :password, autocomplete: "new-password", class:"form-control", id:"input_new_password" %>
+            </div>
+          
+            <div class="form-group col-md-6">
+                    <label for="inputPassword4">Senha atual, por questão de segurança </label>
+                    <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control", id:"input_old_password" %>
+                </div>
+            </div>
+        </div>
+
+        <%= f.submit "atualizar meu perfil", class:"btn button_form" %>
+        <% end %>
+    </form>
+
+
+    <div class="d-flex fixed-bottom bottom_navbar bg-light">
+        <p class="text-dark mr-auto">dinnerdash | todos os direitos reservados</p>
+        <p class="text-dark">desenvolvido por Antônio H.</p>
+    </div>
+
+</body>
+
+
+
+</html>
+
+
+
+<!-- CODIGO ORIGINAL DEVISE-->
+<!--
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -40,4 +117,4 @@
 
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+<%= link_to "Back", :back %> -->

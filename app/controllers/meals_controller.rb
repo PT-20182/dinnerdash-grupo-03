@@ -18,6 +18,10 @@ class MealsController < ApplicationController
 
   # GET /meals/1/edit
   def edit
+    @options = []
+    MealCategory.all.each do |mc|
+      @options << mc.name
+    end
   end
 
   # POST /meals

@@ -19,7 +19,8 @@
 
       <div class="field">
         <%= form.label :Categoria, class:"" %>
-        <%= form.text_field :meal_category_id, class:"form-control backoffice_input" %>
+        <%= select_tag(:meal_category_id, options_for_select(@options), class: "form-control backoffice_input") %>
+        
       </div>
     </div>
     <br>
@@ -35,17 +36,12 @@
     <div class="form-row  d-flex justify-content-between">
       <div class="field">
         <%= form.label :Preço, class:"" %>
-        <%= form.number_field :price, step: :any, class:"form-control  backoffice_input", id:"inputGroupFile03", 'aria-describedby':"inputGroupFileAddon03" %>
+        <%= form.number_field :price, step: :any, class:"form-control  backoffice_input" %>
       </div>
 
       <div class="field">
-        <%= form.label :Foto %><br>
-        <div class="input-group mb-3">
-          <div class="custom-file">
-            <%= form.file_field :image, class:"custom-file-input backoffice_input" %>
-            <label class="custom-file-label" for="inputGroupFile03" >Escolher arquivo...</label>
-          </div>
-        </div>
+      <%= form.label :Foto %><br>
+      <%= form.file_field :image, class:"backoffice_input" %>
       </div>
     </div>
 

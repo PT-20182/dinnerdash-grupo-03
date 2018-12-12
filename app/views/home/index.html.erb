@@ -34,6 +34,7 @@
 
 
 <div class="allCategories">
+    <div class="catName priceText"><%= flash[:error] %></div>
     <% @meal_categories.each do |categ| %>
     <div class="catName"><%= categ.name %> </div>
         <div class="cardsContainer">

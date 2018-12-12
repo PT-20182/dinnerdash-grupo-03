@@ -6,7 +6,7 @@ class Meal < ApplicationRecord
     validates :description, presence: true
     validates :price, presence: true
 
-    before_create :SetImage
+    after_create :SetImage
     def SetImage
         unless self.image.attached?
             self.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'donnut.jpg')),filename: 'donnut.jpg', content_type: 'image/jpg')

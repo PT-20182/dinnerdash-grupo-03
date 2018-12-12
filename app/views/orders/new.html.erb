@@ -1,0 +1,119 @@
+<div class="containerFinalOrder">
+    <div class="darker">
+        <div class="navbarCustom">
+            <div class="pagName">dinnerdash</div>
+            <div>
+                <% if user_signed_in? %>
+                <% else %>
+                <div class="headerText"><%= link_to "Entrar", new_user_session_path , class:"sessionHeader" %><%= link_to  "cadastro", new_user_registration_path, class:"sessionHeader" %></div>
+                <% end %>
+            </div>
+        </div>
+        <div class="pageTitle">
+            <div class="titleText">Bem vindo, <%= @user.name%> </div>
+            <h2>Escolha seus acompanhamentos e pratos.</h2>
+
+        </div>
+    </div>
+</div>
+
+<div class= "margin_left">
+    <div class="catName spaceBottom"> O seu pedido: </div>
+    <div class="quantText"> Confira os itens no seu carrinho antes de finalizar o pedido. </div>
+    <div class="carrinho">
+        <% totalPrice = 0%>
+        <% session[:cart].each do |item| %>
+            <div class="carrinhoCard">
+                <% cartMeal = @meals.where(id: item["id"]).take %>
+                <div class="imageAndInf">
+                    <div class="paddingr"><%= image_tag url_for(cartMeal.image), class:"carrinhoImageCard"%> </div>
+                    <div class="carrinhoInformation">
+                        <div class="mealName"><%= cartMeal.name %></div>
+                        <div class="infText">Quantidade: <%= item["number"]%></div>
+                        <div class="infText">Preço unitário: R$ <%= item["price"] %></div>
+                        <% totalpriceMeal = cartMeal.price.to_f * item["number"].to_f %>
+                        <div class="infText">Preço total: R$ <%= totalpriceMeal %></div>
+                    </div>
+                </div>
+                <% totalPrice += totalpriceMeal %>
+
+                <% totaldisp = (1..item["number"].to_f).to_a %>
+                <% totaldisp = totaldisp.reverse %>
+                <% optionsarray = []%>
+                <% totaldisp.each do |i| %>
+                    <% optionsarray.push([i.to_s, i]) %>
+                <% end %>
+                <div class="carrinhoForm">
+                    <%= form_tag(removeitem_path(id: cartMeal.id), method: :put) do |f| %>
+                        <div class="infText">Quantidade a excluir:</div>
+                        <div><%= select_tag(:quant, options_for_select(optionsarray), class: "optionSelect") %></div>
+                        <div><%= submit_tag("remover do meu prato", class:"rmButtom") %></div>
+                    <% end %>
+                </div>
+            </div>
+        <%end%>
+    </div>
+    <div class="sepline"></div>
+    <div class="finalConfirm">
+        <div class="lastInf">
+            <div class="catName">Esqueceu algo?</div>
+            <div  class="infText"><%= link_to  "clique aqui", root_path %> para retornar ao nosso menu</div>
+        </div>
+
+        <div class="lastInf">
+            <div class="catName spaceBottom"> Preço total do pedido: 
+            <span class="finalprice"> R$ <%= totalPrice %></span> 
+            </div>
+            <div class="butoes">
+                <div class="loginLink butoes">
+                    <%= render 'form', order: @order %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="sepline"></div>
+<div class= "margin_left">
+    <div class ="centralizeTable">
+        <div class="catName spaceBottom">Pedidos anteriores </div>
+        <div class="tabela">
+            <table class="tableex">
+                    <thead>
+                        <tr class="tablehd">
+                            <th>Pedido de nº</th>
+                            <th>Status</th>
+                            <th>Data</th>
+                            <th>Preço Total</th>
+                            <th>Detalhes</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody class="dadosformat">
+                        <% @userOrders.each do |item|%>
+                            <tr class="tablebd todostds">
+                                <td><%= item.id %></td>
+                                <% if item.status == 'pendente' %>
+                                    <td class="alinharcentro"><div><span class="pedidopendente">pendente</span></div> </td>
+                                <% end %>
+                                <% if item.status == 'entregue' %>
+                                    <td class="alinharcentro"><span class="pedidocancelado">cancelado</span> </td>
+                                <% end %>
+                                <% if item.status == 'cancelado' %>
+                                    <td class="alinharcentro"><span class="pedidoentregue">entregue</span> </td>
+                                <% end %>
+                                <td><%= item.created_at %></td>
+                                <td>R$ <%= item.price %></td>
+                                <td class="verbuttom"><%= link_to "ver itens pedidos", item %> </td>
+                            </tr>
+                        <%end%>
+                    </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="direitosReservados">dinnerdash | todos os direitos reservados</div>
+    <div class="creditosAutor">desenvolvido por Trainee</div>
+</div>

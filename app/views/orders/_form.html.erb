@@ -1,0 +1,22 @@
+<%= form_with(model: order, local: true,class: 'submitButtom justifybut') do |form| %>
+  <% if order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% if false%>
+    <div class="field">
+      <%= form.label :price %>
+      <%= form.text_field :price %>
+    </div>
+  <%end%>
+  <div class="actions">
+    <%= form.submit 'finalizar e pagar', :class => 'submitButtom justifybut' %>
+  </div>
+<% end %>

@@ -1,28 +1,18 @@
-
-<h1> DinnerDash #HOME </h1>
-
-<% if user_signed_in? %>
-<%= current_user.email %>
-<br>
-<%= link_to  "Editar", edit_user_registration_path %>
-<br>
-<%= link_to  "Sair", destroy_user_session_path, method: :delete %>
-<% else %>
-<%= link_to "Entrar", new_user_session_path %>
-<% end %>
-
 <% session[:cart] ||= [] %>
 
 <div class="containerB">
     <div class="darker">
-        <div class="navbarCustom">
-            <div class="pagName">dinnerdash</div>
-            <div>
-                <% if user_signed_in? %>
-                <% else %>
-                <div class="headerText"><%= link_to "Entrar", new_user_session_path , class:"sessionHeader" %><%= link_to  "cadastro", new_user_registration_path, class:"sessionHeader" %></div>
-                <% end %>
-            </div>
+        <div class="top_navbar container d-flex">
+            <div class="mr-auto p-2"><a class="text-light font-weight-bold logo" href="#">Dinnerdash</a></div>
+            <% if user_signed_in? %>
+                <%if current_user.admin == true %>
+                    <div class="p-2"><%= link_to  "backoffice", orders_path , class:"text-warning current font-weight-bold"%></div>
+                <%end%>
+                <div class="p-2"><%= link_to  "Perfil", edit_user_registration_path, class:"text-light font-weight-bold"  %> </div>
+                <div class="p-2"><%= link_to  "Sair", destroy_user_session_path, method: :delete,class:"text-light font-weight-bold" %></div>
+            <% else %>
+            <div class="headerText"><%= link_to "Entrar", new_user_session_path , class:"sessionHeader" %><%= link_to  "cadastro", new_user_registration_path, class:"sessionHeader" %></div>
+            <%end%>
         </div>
         <div class="pageTitle">
             <div class="titleText">Monte o seu prato</div>

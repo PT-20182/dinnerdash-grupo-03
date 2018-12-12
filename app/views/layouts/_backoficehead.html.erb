@@ -1,10 +1,16 @@
  <div class="containerA">
     <div class="darker">
-        <div class="navbarCustom">
-            <div class="pagName">dinnerdash</div>
-            <div>
-                <div><span id="yellow">Backoffice</span> <a class="linkNav" href="">perfil</a> | <a class="linkNav" href="">sair</a></div>
-            </div>
+        <div class="top_navbar container d-flex">
+            <div class="mr-auto p-2"><a class="text-light font-weight-bold logo" href="#">Dinnerdash</a></div>
+            <% if user_signed_in? %>
+                <%if current_user.admin == true %>
+                    <div class="p-2"><%= link_to  "backoffice", orders_path , class:"text-warning current font-weight-bold"%></div>
+                <%end%>
+                <div class="p-2"><%= link_to  "Perfil", edit_user_registration_path, class:"text-light font-weight-bold"  %> </div>
+                <div class="p-2"><%= link_to  "Sair", destroy_user_session_path, method: :delete,class:"text-light font-weight-bold" %></div>
+            <% else %>
+            <div class="headerText"><%= link_to "Entrar", new_user_session_path , class:"sessionHeader" %><%= link_to  "cadastro", new_user_registration_path, class:"sessionHeader" %></div>
+            <%end%>
         </div>
         <div class="pageTitle">
             <div id="Backoff">Backoffice</div>
@@ -15,9 +21,9 @@
 </div>
 <div class="optionBar">
   <div class="marginBar">
-    <a> <%= link_to "Pedidos", orders_path %></a>
+    <%= link_to "Pedidos", orders_path %>
     <a class="optionBarLinks"href="">Usuários</a>
-    <a class="optionBarLinks"href="">Refeições</a>
-    <a><%= link_to  "Categorias de refeição", meal_categories_path %></a>
+    <%= link_to "Refeições", meals_path %>
+    <%= link_to  "Categorias de refeição", meal_categories_path %>
   </div>
 </div>

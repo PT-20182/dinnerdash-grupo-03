@@ -19,7 +19,7 @@
                             <% number +=1 %>
                         <% end %>
                         <td> <%= number %></td>
-                        <td> <%= category.created_at %></td>
+                        <td> <%= category.created_at.strftime("%d/%m/%Y") %></td>
                         <td class="editbuttom"><%= link_to  "editar", edit_meal_category_path(category) %></td>
                         <td class="excluirbuttom"><%= link_to 'excluir', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                     </tr>

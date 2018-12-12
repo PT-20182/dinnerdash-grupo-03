@@ -29,10 +29,10 @@
                     <div class="paddingr"><%= image_tag url_for(cartMeal.image), class:"carrinhoImageCard"%> </div>
                     <div class="carrinhoInformation">
                         <div class="mealName"><%= cartMeal.name %></div>
-                        <div class="infText">Quantidade: <%= item.quantity%></div>
-                        <div class="infText">Preço unitário: R$ <%= cartMeal.price %></div>
+                        <div class="infText">Quantidade: <%= item.quantity.to_i%></div>
+                        <div class="infText">Preço unitário: R$ <%= sprintf('%.2f',cartMeal.price) %></div>
                         <% totalpriceMeal = cartMeal.price.to_f * item.quantity.to_f %>
-                        <div class="infText">Preço total: R$ <%= totalpriceMeal %></div>
+                        <div class="infText">Preço total: R$ <%= sprintf('%.2f',totalpriceMeal) %></div>
                     </div>
                 </div>
                 <% totalPrice += totalpriceMeal %>
@@ -79,7 +79,7 @@
                                     <td class="alinharcentro"><span class="pedidoentregue">entregue</span> </td>
                                 <% end %>
                                 <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
-                                <td>R$ <%= item.price %></td>
+                                <td>R$ <%=sprintf('%.2f',item.price)  %></td>
                                 <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal<%=item.id%>">
                                     ver pedidos anteriores
                                     </button>
@@ -104,9 +104,9 @@
                                                             <div class="carrinhoInformation">
                                                                 <div class="mealName"><%= cartMeal.name %></div>
                                                                 <div class="infText">Quantidade: <%= order_meal.quantity%></div>
-                                                                <div class="infText">Preço unitário: R$ <%= cartMeal.price %></div>
+                                                                <div class="infText">Preço unitário: R$ <%=sprintf('%.2f',cartMeal.price)  %></div>
                                                                 <% totalpriceMeal = cartMeal.price.to_f * order_meal.quantity.to_f %>
-                                                                <div class="infText">Preço total: R$ <%= totalpriceMeal %></div>
+                                                                <div class="infText">Preço total: R$ <%=sprintf('%.2f', totalpriceMeal) %></div>
                                                             </div>
                                                         </div>
                                                         <% totalPrice += totalpriceMeal %>

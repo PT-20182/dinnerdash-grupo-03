@@ -22,7 +22,17 @@
     background-color: #CCCCCC;
     background-blend-mode: multiply;
 }
-
+.tcontainer_perfil{
+    /* background-image: url("/home/ahmoura/Documentos/cjr/dinner-dash-20182-front/imagens/helloquence-61189.jpg"); */
+    background-image: url("foodCart.jpg"); 
+    background-repeat: no-repeat;
+    background-attachment: local;
+    background-position: center;
+    background-size: cover;
+    height: 50vh;
+    background-color: #CCCCCC;
+    background-blend-mode: multiply;
+}
 .text-light .current{
     color: #FFD700;
 }

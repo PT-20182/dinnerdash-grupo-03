@@ -1,9 +1,14 @@
 class MealCategoriesController < ApplicationController
   def index
     @meal_categories = MealCategory.all
-    if current_user.admin == false
+    if user_signed_in?
+      if current_user.admin == false
+        redirect_to root_path
+      end
+    else
       redirect_to root_path
     end
+    flash[:error] = "Entre como administrador para visualizar essas Informações"
   end
 
   def show
@@ -15,7 +20,6 @@ class MealCategoriesController < ApplicationController
 
   def create
     category = MealCategory.create(cat_params)
-
     redirect_to meal_categories_path
   end
 

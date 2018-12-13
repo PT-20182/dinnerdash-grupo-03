@@ -150,20 +150,6 @@
     cursor: copy;
 }
 
-
-/* Footer */
-.footer{
-    display: flex;
-    width: 100%;
-    align-items: center;
-    position: fixed;
-    bottom: 0;
-    /* position: relative; */
-    justify-content: space-between;
-    background-color: rgb(177, 175, 175);
-    height: 2.5em;
-    z-index: 2;
-}
 .direitosReservados{
     margin-left: 4em;
 }

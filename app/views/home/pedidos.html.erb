@@ -22,6 +22,7 @@
     <div class="catName spaceBottom">Último pedido </div>
     <div class="carrinho">
         <% totalPrice = 0%>
+        <% if @order != nil %>
         <% @order.order_meals.each do |item| %>
             <div class="carrinhoCard">
                 <% cartMeal = @meals.where(id: item.meal_id).take %>
@@ -44,6 +45,7 @@
                     <% optionsarray.push([i.to_s, i]) %>
                 <% end %>
             </div>
+        <%end%>
         <%end%>
     </div>
     <div class="sepline"></div>

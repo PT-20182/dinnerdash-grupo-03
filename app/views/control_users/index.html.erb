@@ -14,10 +14,14 @@
     <tbody class="dadosformat">
         <% @users.each do |user| %>
         <tr class="tablebd todostds">
-            <td><%= user.name %> </td>
+            <td>
+            <% if user.admin == true %>
+              <span class="isadmin">admin</span>
+            <% end %>
+            <%= user.name %> </td>
             <td><%= user.email %> </td>
             <td> <%= user.created_at.strftime("%d/%m/%Y") %></td>
-            <td class="editbuttom"><%= link_to  "editar",edit_user_registration_path(user) %></td>
+            <td class="editbuttom"><%= link_to  "editar", edit_user_password_path(user) %></td>
             <td class="excluirbuttom"><%= link_to 'excluir', registration_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
         <% end %>

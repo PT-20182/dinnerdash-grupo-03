@@ -43,7 +43,7 @@
                                 <%optionsarray.push([i.to_s, i])%>
                             <% end %>
                             <p class="descText"><%= item.description %></p>
-                            <p class="priceText">R$ <%=item.price%> por porção</p>
+                            <p class="priceText">R$ <%=sprintf('%.2f', item.price)%> por porção</p>
                             <div class="quantText">Quantidade </div>
                             <%= form_tag(additem_path(id: item.id), method: :put) do |f| %>
                                 <%= select_tag(:quant, options_for_select(optionsarray), class: "optionSelect") %>
@@ -76,9 +76,9 @@
                     <div class="carrinhoInformation">
                         <div class="mealName"><%= cartMeal.name %></div>
                         <div class="infText">Quantidade: <%= item["number"]%></div>
-                        <div class="infText">Preço unitário: R$ <%= item["price"] %></div>
+                        <div class="infText">Preço unitário: R$ <%= sprintf('%.2f',item["price"].to_f) %></div>
                         <% totalpriceMeal = cartMeal.price.to_f * item["number"].to_f %>
-                        <div class="infText">Preço total: R$ <%= totalpriceMeal %></div>
+                        <div class="infText">Preço total: R$ <%= sprintf('%.2f',totalpriceMeal) %></div>
                     </div>
                 </div>
                 <% totalPrice += totalpriceMeal %>
@@ -106,7 +106,7 @@
             <div> Coloque itens no carrinho </div>
         <% else%>
             <div class="catName spaceBottom"> Preço total do pedido: 
-            <span class="finalprice"> R$ <%= totalPrice %></span> 
+            <span class="finalprice"> R$ <%= sprintf('%.2f', totalPrice) %></span> 
             </div>
             <% if user_signed_in? %>
                 <div class="logText"> Finalizar Pedido</div>

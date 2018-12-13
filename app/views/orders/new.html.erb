@@ -13,9 +13,9 @@
                     <div class="carrinhoInformation">
                         <div class="mealName"><%= cartMeal.name %></div>
                         <div class="infText">Quantidade: <%= item["number"]%></div>
-                        <div class="infText">Preço unitário: R$ <%= item["price"] %></div>
+                        <div class="infText">Preço unitário: R$ <%= sprintf('%.2f',item["price"].to_f) %></div>
                         <% totalpriceMeal = cartMeal.price.to_f * item["number"].to_f %>
-                        <div class="infText">Preço total: R$ <%= totalpriceMeal %></div>
+                        <div class="infText">Preço total: R$ <%= sprintf('%.2f',totalpriceMeal) %></div>
                     </div>
                 </div>
                 <% totalPrice += totalpriceMeal %>
@@ -45,7 +45,7 @@
 
         <div class="lastInf">
             <div class="catName spaceBottom"> Preço total do pedido: 
-            <span class="finalprice"> R$ <%= totalPrice %></span> 
+            <span class="finalprice"> R$ <%=sprintf('%.2f',totalPrice)  %></span> 
             </div>
             <div class="butoes">
                 <div class="loginLink butoes">
@@ -87,7 +87,7 @@
                                     <td class="alinharcentro"><span class="pedidoentregue">entregue</span> </td>
                                 <% end %>
                                 <td><%= item.created_at %></td>
-                                <td>R$ <%= item.price %></td>
+                                <td>R$ <%= sprintf('%.2f',item.price) %></td>
                                 <td class="verbuttom"><%= link_to "ver itens pedidos", item %> </td>
                             </tr>
                         <%end%>

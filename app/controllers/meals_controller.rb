@@ -14,11 +14,15 @@ class MealsController < ApplicationController
   # GET /meals/new
   def new
     @meal = Meal.new
+    @options = ["Sem Caregoria"]
+    MealCategory.all.each do |mc|
+      @options << mc.name
+    end
   end
 
   # GET /meals/1/edit
   def edit
-    @options = []
+    @options = ["Sem Caregoria"]
     MealCategory.all.each do |mc|
       @options << mc.name
     end
